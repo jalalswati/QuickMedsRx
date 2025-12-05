@@ -29,7 +29,12 @@ export default function PharmacyAnalytics() {
       path: "/pharmacy-analytics",
       active: true,
     },
-    { icon: "💬", label: "Messages", path: "/pharmacy-messages", active: false },
+    {
+      icon: "💬",
+      label: "Messages",
+      path: "/pharmacy-messages",
+      active: false,
+    },
     {
       icon: "📅",
       label: "Calendar",
@@ -59,7 +64,9 @@ export default function PharmacyAnalytics() {
               }`}
             >
               <span className="text-xl">{item.icon}</span>
-              <span className={`font-${item.active ? "bold" : "medium"} text-sm`}>
+              <span
+                className={`font-${item.active ? "bold" : "medium"} text-sm`}
+              >
                 {item.label}
               </span>
             </div>
@@ -123,16 +130,23 @@ export default function PharmacyAnalytics() {
         {/* Analytics Content */}
         <div className="flex-1 overflow-auto p-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-[#464255] mb-2">Analytics</h1>
-            <p className="text-[#A3A3A3]">View pharmacy analytics and performance metrics</p>
+            <h1 className="text-4xl font-bold text-[#464255] mb-2">
+              Analytics
+            </h1>
+            <p className="text-[#A3A3A3]">
+              View pharmacy analytics and performance metrics
+            </p>
           </div>
 
           {/* Placeholder Content */}
           <div className="bg-white rounded-2xl p-12 shadow-sm flex flex-col items-center justify-center min-h-96">
             <div className="text-6xl mb-4">📊</div>
-            <h2 className="text-2xl font-bold text-[#464255] mb-2">Analytics Dashboard</h2>
+            <h2 className="text-2xl font-bold text-[#464255] mb-2">
+              Analytics Dashboard
+            </h2>
             <p className="text-[#A3A3A3] text-center max-w-md">
-              This section is coming soon. Analytics and performance metrics will be displayed here.
+              This section is coming soon. Analytics and performance metrics
+              will be displayed here.
             </p>
           </div>
         </div>

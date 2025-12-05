@@ -32,7 +32,12 @@ export default function PharmacyDashboard() {
       path: "/pharmacy-analytics",
       active: false,
     },
-    { icon: "💬", label: "Messages", path: "/pharmacy-messages", active: false },
+    {
+      icon: "💬",
+      label: "Messages",
+      path: "/pharmacy-messages",
+      active: false,
+    },
     {
       icon: "📅",
       label: "Calendar",

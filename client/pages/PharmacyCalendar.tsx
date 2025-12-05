@@ -29,7 +29,12 @@ export default function PharmacyCalendar() {
       path: "/pharmacy-analytics",
       active: false,
     },
-    { icon: "💬", label: "Messages", path: "/pharmacy-messages", active: false },
+    {
+      icon: "💬",
+      label: "Messages",
+      path: "/pharmacy-messages",
+      active: false,
+    },
     {
       icon: "📅",
       label: "Calendar",
@@ -59,7 +64,9 @@ export default function PharmacyCalendar() {
               }`}
             >
               <span className="text-xl">{item.icon}</span>
-              <span className={`font-${item.active ? "bold" : "medium"} text-sm`}>
+              <span
+                className={`font-${item.active ? "bold" : "medium"} text-sm`}
+              >
                 {item.label}
               </span>
             </div>
@@ -132,7 +139,8 @@ export default function PharmacyCalendar() {
             <div className="text-6xl mb-4">📅</div>
             <h2 className="text-2xl font-bold text-[#464255] mb-2">Calendar</h2>
             <p className="text-[#A3A3A3] text-center max-w-md">
-              This section is coming soon. Pharmacy schedules and events will be displayed here.
+              This section is coming soon. Pharmacy schedules and events will be
+              displayed here.
             </p>
           </div>
         </div>

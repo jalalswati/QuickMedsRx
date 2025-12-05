@@ -10,6 +10,8 @@ import SignUp from "./pages/SignUp";
 import PharmacyDashboard from "./pages/PharmacyDashboard";
 import PharmacyOrderList from "./pages/PharmacyOrderList";
 import PharmacyAnalytics from "./pages/PharmacyAnalytics";
+import PharmacyMessages from "./pages/PharmacyMessages";
+import PharmacyCalendar from "./pages/PharmacyCalendar";
 import PatientDashboard from "./pages/PatientDashboard";
 import DriverDashboard from "./pages/DriverDashboard";
 import NotFound from "./pages/NotFound";
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/pharmacy-dashboard" element={<PharmacyDashboard />} />
           <Route path="/pharmacy-order-list" element={<PharmacyOrderList />} />
           <Route path="/pharmacy-analytics" element={<PharmacyAnalytics />} />
+          <Route path="/pharmacy-messages" element={<PharmacyMessages />} />
+          <Route path="/pharmacy-calendar" element={<PharmacyCalendar />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/driver-dashboard" element={<DriverDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -17,7 +17,7 @@ export default function PharmacyOrderList() {
     { label: "Dashboard", path: "/pharmacy-dashboard", active: false },
     { label: "Order List", path: "/pharmacy-order-list", active: true },
     { label: "Analytics", path: "/pharmacy-analytics", active: false },
-    { label: "Reviews", path: "/pharmacy-reviews", active: false },
+    { label: "Messages", path: "/pharmacy-messages", active: false },
     { label: "Calendar", path: "/pharmacy-calendar", active: false },
   ];
 

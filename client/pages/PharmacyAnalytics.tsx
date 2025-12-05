@@ -29,7 +29,7 @@ export default function PharmacyAnalytics() {
       path: "/pharmacy-analytics",
       active: true,
     },
-    { icon: "✏️", label: "Reviews", path: "/pharmacy-reviews", active: false },
+    { icon: "💬", label: "Messages", path: "/pharmacy-messages", active: false },
     {
       icon: "📅",
       label: "Calendar",

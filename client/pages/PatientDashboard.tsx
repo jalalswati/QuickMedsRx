@@ -39,11 +39,38 @@ export default function PatientDashboard() {
   };
 
   const menuItems = [
-    { label: "Dashboard", active: true },
-    { label: "Order History", active: false },
-    { label: "Personal Info", active: false },
-    { label: "Calendar", active: false },
-    { label: "Message", active: false },
+    { label: "Dashboard" },
+    { label: "Order History" },
+    { label: "Personal Info" },
+    { label: "Calendar" },
+    { label: "Message" },
+  ];
+
+  const patientOrders = [
+    {
+      id: 1,
+      medication: "Omeprazole",
+      amount: "12 Tablets",
+      prescriber: "Dr. Johnson",
+      status: "Delivered",
+      orderDate: "December 10, 2024"
+    },
+    {
+      id: 2,
+      medication: "Ibuprofen",
+      amount: "30 Tablets",
+      prescriber: "Dr. Martinez",
+      status: "Delivered",
+      orderDate: "December 5, 2024"
+    },
+    {
+      id: 3,
+      medication: "Lisinopril",
+      amount: "60 Tablets",
+      prescriber: "Dr. Williams",
+      status: "In Transit",
+      orderDate: "December 15, 2024"
+    }
   ];
 
   return (

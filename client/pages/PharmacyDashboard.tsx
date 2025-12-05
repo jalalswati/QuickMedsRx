@@ -12,15 +12,15 @@ export default function PharmacyDashboard() {
   };
 
   const menuItems = [
-    { icon: "🏠", label: "Dashboard", active: true },
-    { icon: "📋", label: "Order List", active: false },
-    { icon: "📄", label: "Order Detail", active: false },
-    { icon: "👥", label: "Customer", active: false },
-    { icon: "📊", label: "Analytics", active: false },
-    { icon: "✏️", label: "Reviews", active: false },
-    { icon: "👤", label: "Customer Detail", active: false },
-    { icon: "📅", label: "Calendar", active: false },
-    { icon: "💬", label: "Chat", active: false },
+    { icon: "🏠", label: "Dashboard", path: "/pharmacy-dashboard", active: true },
+    { icon: "📋", label: "Order List", path: "/pharmacy-order-list", active: false },
+    { icon: "📄", label: "Order Detail", path: "/pharmacy-order-detail", active: false },
+    { icon: "👥", label: "Customer", path: "/pharmacy-customer", active: false },
+    { icon: "📊", label: "Analytics", path: "/pharmacy-analytics", active: false },
+    { icon: "✏️", label: "Reviews", path: "/pharmacy-reviews", active: false },
+    { icon: "👤", label: "Customer Detail", path: "/pharmacy-customer-detail", active: false },
+    { icon: "📅", label: "Calendar", path: "/pharmacy-calendar", active: false },
+    { icon: "💬", label: "Chat", path: "/pharmacy-chat", active: false },
   ];
 
   return (
@@ -38,8 +38,9 @@ export default function PharmacyDashboard() {
           {menuItems.map((item, index) => (
             <div
               key={index}
+              onClick={() => navigate(item.path, { state: { username } })}
               className={`flex items-center gap-4 cursor-pointer transition-colors ${
-                item.active ? "text-[#00B074]" : "text-[#464255]"
+                item.active ? "text-[#00B074] font-bold" : "text-[#464255]"
               }`}
             >
               <span className="text-xl">{item.icon}</span>
@@ -148,11 +149,11 @@ export default function PharmacyDashboard() {
 
           {/* Charts Section */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Chart Order */}
+            {/* Patient Orders Chart */}
             <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-[#464255]">Chart Order</h3>
+                  <h3 className="text-2xl font-bold text-[#464255]">Patient Orders</h3>
                   <p className="text-sm text-[#B9BBBD]">Lorem ipsum dolor sit amet, consectetur adip</p>
                 </div>
                 <button className="px-4 py-2 border border-[#2D9CDB] text-[#2D9CDB] rounded-lg text-sm font-bold hover:bg-[#2D9CDB] hover:text-white transition-colors">

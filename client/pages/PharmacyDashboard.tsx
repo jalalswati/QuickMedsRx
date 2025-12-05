@@ -112,13 +112,6 @@ export default function PharmacyDashboard() {
                   Hello, <span className="font-bold">{username}</span>
                 </p>
               </div>
-              <div className="w-14 h-14 rounded-full bg-gray-300 overflow-hidden">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/0345a42aa19f08f5d968f7636279968bee90c2d5?width=112"
-                  alt="Avatar"
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </div>
           </div>
         </div>

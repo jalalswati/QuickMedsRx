@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import PharmacyDashboard from "./pages/PharmacyDashboard";
 import PharmacyOrderList from "./pages/PharmacyOrderList";
+import PharmacyAnalytics from "./pages/PharmacyAnalytics";
 import PatientDashboard from "./pages/PatientDashboard";
 import DriverDashboard from "./pages/DriverDashboard";
 import NotFound from "./pages/NotFound";

@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import PharmacyDashboard from "./pages/PharmacyDashboard";
+import PharmacyOrderList from "./pages/PharmacyOrderList";
 import PatientDashboard from "./pages/PatientDashboard";
 import DriverDashboard from "./pages/DriverDashboard";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/pharmacy-dashboard" element={<PharmacyDashboard />} />
+          <Route path="/pharmacy-order-list" element={<PharmacyOrderList />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/driver-dashboard" element={<DriverDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

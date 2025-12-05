@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function DriverDashboard() {
+export default function DriverCalendar() {
   const location = useLocation();
   const navigate = useNavigate();
   const username = location.state?.username || "Jamal Khan";
@@ -10,18 +10,53 @@ export default function DriverDashboard() {
   };
 
   const menuItems = [
-    { label: "Dashboard", path: "/driver-dashboard", active: true },
+    { label: "Dashboard", path: "/driver-dashboard", active: false },
     { label: "Payment History", path: "/driver-payment-history", active: false },
     { label: "Personal Info", path: "/driver-personal-info", active: false },
-    { label: "Calendar", path: "/driver-calendar", active: false },
+    { label: "Calendar", path: "/driver-calendar", active: true },
     { label: "Message", path: "/driver-messages", active: false },
+  ];
+
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  
+  const calendarDays = [
+    { day: 1, shift: null },
+    { day: 2, shift: "Morning Shift" },
+    { day: 3, shift: null },
+    { day: 4, shift: "Night Shift" },
+    { day: 5, shift: null },
+    { day: 6, shift: null },
+    { day: 7, shift: null },
+    { day: 8, shift: null },
+    { day: 9, shift: "Evening Shift", color: "text-[#2ECC71]" },
+    { day: 10, shift: null },
+    { day: 11, shift: "Rest", color: "text-[#999]" },
+    { day: 12, shift: null },
+    { day: 13, shift: null },
+    { day: 14, shift: null },
+    { day: 15, shift: "Morning Shift" },
+    { day: 16, shift: null },
+    { day: 17, shift: null },
+    { day: 18, shift: null },
+    { day: 19, shift: null },
+    { day: 20, shift: null },
+    { day: 21, shift: null },
+    { day: 22, shift: null },
+    { day: 23, shift: null },
+    { day: 24, shift: null },
+    { day: 25, shift: "Night Shift" },
+    { day: 26, shift: null },
+    { day: 27, shift: null },
+    { day: 28, shift: null },
+    { day: 29, shift: null },
+    { day: 30, shift: null },
+    { day: 31, shift: null },
   ];
 
   return (
     <div className="min-h-screen flex bg-[#F3F2F7]">
       {/* Sidebar */}
       <div className="w-80 bg-white shadow-sm flex flex-col p-6 rounded-3xl m-6">
-        {/* Logo */}
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-[#333]">{username}</h2>
           <img
@@ -31,7 +66,6 @@ export default function DriverDashboard() {
           />
         </div>
 
-        {/* Menu */}
         <nav className="flex-1 space-y-10">
           {menuItems.map((item, index) => (
             <div
@@ -46,7 +80,6 @@ export default function DriverDashboard() {
           ))}
         </nav>
 
-        {/* Logout */}
         <div className="pt-8 border-t">
           <button
             onClick={handleLogout}
@@ -60,34 +93,36 @@ export default function DriverDashboard() {
       {/* Main Content */}
       <div className="flex-1 p-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-[#464255]">Dashboard</h1>
+          <h1 className="text-4xl font-bold text-[#464255] mb-2">Calendar</h1>
+          <p className="text-base text-[#555] opacity-30">{"< March 2025 >"}</p>
         </div>
 
-        {/* Map Section */}
-        <div className="bg-white rounded-3xl p-8 shadow-sm mb-6">
-          <div className="relative w-full h-96 bg-gradient-to-br from-[#90EE90] to-[#B0E0E6] rounded-3xl overflow-hidden border-4 border-white">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/21c40d3234f3564d286b1bf7d69bd9730f6efa8e?width=2183"
-              alt="Map"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="bg-[#6366F1] text-white px-12 py-4 rounded-2xl font-bold text-3xl hover:bg-[#5558E3] transition-colors shadow-lg">
-                Start Shift
-              </button>
-            </div>
+        {/* Calendar */}
+        <div className="bg-white rounded-2xl p-8 shadow-sm">
+          {/* Days of Week Header */}
+          <div className="grid grid-cols-7 gap-4 mb-4">
+            {daysOfWeek.map((day) => (
+              <div key={day} className="text-center text-base font-medium text-[#777] opacity-50">
+                {day}
+              </div>
+            ))}
           </div>
-        </div>
 
-        {/* Schedule Section */}
-        <div className="bg-white rounded-3xl p-8 shadow-sm">
-          <h2 className="text-3xl font-bold text-[#000] mb-6">Shift Management System</h2>
-          <div className="bg-[#F8F8F8] rounded-2xl p-6">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/3e34a26b81275db64f478571004acad72b291438?width=2034"
-              alt="Weekly Schedule"
-              className="w-full object-contain"
-            />
+          {/* Calendar Grid */}
+          <div className="grid grid-cols-7 gap-3">
+            {calendarDays.map((item, index) => (
+              <div
+                key={index}
+                className="border border-[#E0E0E0] rounded-lg p-3 min-h-24 hover:shadow-sm transition-shadow"
+              >
+                <p className="text-sm font-medium text-[#555] mb-2">{item.day}</p>
+                {item.shift && (
+                  <p className={`text-xs font-medium ${item.color || "text-[#000]"}`}>
+                    {item.shift}
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>

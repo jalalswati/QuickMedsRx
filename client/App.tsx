@@ -14,6 +14,10 @@ import PharmacyMessages from "./pages/PharmacyMessages";
 import PharmacyCalendar from "./pages/PharmacyCalendar";
 import PatientDashboard from "./pages/PatientDashboard";
 import DriverDashboard from "./pages/DriverDashboard";
+import DriverMessages from "./pages/DriverMessages";
+import DriverPaymentHistory from "./pages/DriverPaymentHistory";
+import DriverPersonalInfo from "./pages/DriverPersonalInfo";
+import DriverCalendar from "./pages/DriverCalendar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +38,10 @@ const App = () => (
           <Route path="/pharmacy-calendar" element={<PharmacyCalendar />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/driver-dashboard" element={<DriverDashboard />} />
+          <Route path="/driver-messages" element={<DriverMessages />} />
+          <Route path="/driver-payment-history" element={<DriverPaymentHistory />} />
+          <Route path="/driver-personal-info" element={<DriverPersonalInfo />} />
+          <Route path="/driver-calendar" element={<DriverCalendar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -456,7 +456,10 @@ export default function PatientDashboard() {
                 </div>
               </div>
               <div className="max-w-6xl mt-8">
-                <button className="w-full lg:w-auto px-8 py-3 bg-[#2D9CDB] text-white rounded-lg font-bold hover:bg-[#1E7FB5] transition-colors">
+                <button
+                  onClick={() => setIsEditingPersonalInfo(true)}
+                  className="w-full lg:w-auto px-8 py-3 bg-[#2D9CDB] text-white rounded-lg font-bold hover:bg-[#1E7FB5] transition-colors"
+                >
                   Edit Personal Info
                 </button>
               </div>

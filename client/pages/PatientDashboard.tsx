@@ -408,16 +408,16 @@ export default function PatientDashboard() {
                   <h2 className="text-2xl font-bold text-[#000] mb-6">Primary Care Doctor</h2>
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg font-bold text-[#000] mb-2">Dr. Kevin Ramirez</h3>
-                      <p className="text-sm text-[#666]">Family Medicine</p>
+                      <h3 className="text-lg font-bold text-[#000] mb-2">{patientInfo.doctorName}</h3>
+                      <p className="text-sm text-[#666]">{patientInfo.specialty}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Clinic</h4>
-                      <p className="text-sm text-[#666]">Cedars-Sinai Medical Group</p>
+                      <p className="text-sm text-[#666]">{patientInfo.clinic}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Contact</h4>
-                      <p className="text-sm text-[#666]">(323) 994-2200</p>
+                      <p className="text-sm text-[#666]">{patientInfo.doctorPhone}</p>
                     </div>
                     <div className="pt-4">
                       <a href="#" className="text-[#2D9CDB] font-bold text-sm hover:underline">Change Pharmacy</a>

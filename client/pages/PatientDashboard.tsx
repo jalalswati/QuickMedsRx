@@ -473,6 +473,14 @@ export default function PatientDashboard() {
         </div>
       </div>
 
+      {/* Personal Info Modal */}
+      <PersonalInfoModal
+        isOpen={isEditingPersonalInfo}
+        patientInfo={patientInfo}
+        onClose={() => setIsEditingPersonalInfo(false)}
+        onSave={(updatedInfo) => setPatientInfo(updatedInfo)}
+      />
+
       {/* Order Detail Modal */}
       {selectedOrderId && (
         <PatientOrderDetailModal

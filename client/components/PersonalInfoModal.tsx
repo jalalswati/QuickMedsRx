@@ -62,7 +62,9 @@ export default function PersonalInfoModal({
         <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
           <div className="sticky top-0 bg-white border-b border-[#EBEBEB] p-8 flex items-center justify-between">
-            <h2 className="text-3xl font-bold text-[#000]">Edit Personal Info</h2>
+            <h2 className="text-3xl font-bold text-[#000]">
+              Edit Personal Info
+            </h2>
             <button
               onClick={onClose}
               className="text-[#A3A3A3] hover:text-[#000] text-2xl w-10 h-10 flex items-center justify-center"
@@ -75,10 +77,14 @@ export default function PersonalInfoModal({
           <div className="p-8 space-y-8">
             {/* Patient Details Section */}
             <div>
-              <h3 className="text-2xl font-bold text-[#000] mb-6">Patient Details</h3>
+              <h3 className="text-2xl font-bold text-[#000] mb-6">
+                Patient Details
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Full Name</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Full Name
+                  </label>
                   <input
                     type="text"
                     value={formData.name}
@@ -87,7 +93,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Date of Birth</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Date of Birth
+                  </label>
                   <input
                     type="text"
                     value={formData.dob}
@@ -96,7 +104,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Phone</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Phone
+                  </label>
                   <input
                     type="text"
                     value={formData.phone}
@@ -105,7 +115,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Email</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Email
+                  </label>
                   <input
                     type="email"
                     value={formData.email}
@@ -114,7 +126,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Street Address</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Street Address
+                  </label>
                   <input
                     type="text"
                     value={formData.address}
@@ -123,7 +137,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">City</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    City
+                  </label>
                   <input
                     type="text"
                     value={formData.city}
@@ -132,7 +148,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">State</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    State
+                  </label>
                   <input
                     type="text"
                     value={formData.state}
@@ -141,7 +159,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">ZIP Code</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    ZIP Code
+                  </label>
                   <input
                     type="text"
                     value={formData.zip}
@@ -154,10 +174,14 @@ export default function PersonalInfoModal({
 
             {/* Primary Care Doctor Section */}
             <div>
-              <h3 className="text-2xl font-bold text-[#000] mb-6">Primary Care Doctor</h3>
+              <h3 className="text-2xl font-bold text-[#000] mb-6">
+                Primary Care Doctor
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Doctor Name</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Doctor Name
+                  </label>
                   <input
                     type="text"
                     value={formData.doctorName}
@@ -166,7 +190,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Specialty</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Specialty
+                  </label>
                   <input
                     type="text"
                     value={formData.specialty}
@@ -175,7 +201,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Clinic</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Clinic
+                  </label>
                   <input
                     type="text"
                     value={formData.clinic}
@@ -184,11 +212,15 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Contact Phone</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Contact Phone
+                  </label>
                   <input
                     type="text"
                     value={formData.doctorPhone}
-                    onChange={(e) => handleChange("doctorPhone", e.target.value)}
+                    onChange={(e) =>
+                      handleChange("doctorPhone", e.target.value)
+                    }
                     className="w-full px-4 py-2 border border-[#DDD] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
                   />
                 </div>
@@ -197,10 +229,14 @@ export default function PersonalInfoModal({
 
             {/* Main Pharmacy Section */}
             <div>
-              <h3 className="text-2xl font-bold text-[#000] mb-6">Main Pharmacy</h3>
+              <h3 className="text-2xl font-bold text-[#000] mb-6">
+                Main Pharmacy
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Plan</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Plan
+                  </label>
                   <input
                     type="text"
                     value={formData.pharmacy}
@@ -209,7 +245,9 @@ export default function PersonalInfoModal({
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Member ID</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Member ID
+                  </label>
                   <input
                     type="text"
                     value={formData.memberId}
@@ -222,32 +260,46 @@ export default function PersonalInfoModal({
 
             {/* Insurance Information Section */}
             <div>
-              <h3 className="text-2xl font-bold text-[#000] mb-6">Insurance Information</h3>
+              <h3 className="text-2xl font-bold text-[#000] mb-6">
+                Insurance Information
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Insurance Provider</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Insurance Provider
+                  </label>
                   <input
                     type="text"
                     value={formData.insuranceProvider}
-                    onChange={(e) => handleChange("insuranceProvider", e.target.value)}
+                    onChange={(e) =>
+                      handleChange("insuranceProvider", e.target.value)
+                    }
                     className="w-full px-4 py-2 border border-[#DDD] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Insurance ID</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Insurance ID
+                  </label>
                   <input
                     type="text"
                     value={formData.insuranceId}
-                    onChange={(e) => handleChange("insuranceId", e.target.value)}
+                    onChange={(e) =>
+                      handleChange("insuranceId", e.target.value)
+                    }
                     className="w-full px-4 py-2 border border-[#DDD] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#464255] mb-2">Group Number</label>
+                  <label className="block text-sm font-bold text-[#464255] mb-2">
+                    Group Number
+                  </label>
                   <input
                     type="text"
                     value={formData.groupNumber}
-                    onChange={(e) => handleChange("groupNumber", e.target.value)}
+                    onChange={(e) =>
+                      handleChange("groupNumber", e.target.value)
+                    }
                     className="w-full px-4 py-2 border border-[#DDD] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
                   />
                 </div>

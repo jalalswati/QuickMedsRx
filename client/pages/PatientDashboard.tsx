@@ -74,7 +74,7 @@ export default function PatientDashboard() {
       amount: "12 Tablets",
       prescriber: "Dr. Johnson",
       status: "Delivered",
-      orderDate: "December 10, 2024"
+      orderDate: "December 10, 2024",
     },
     {
       id: 2,
@@ -82,7 +82,7 @@ export default function PatientDashboard() {
       amount: "30 Tablets",
       prescriber: "Dr. Martinez",
       status: "Delivered",
-      orderDate: "December 5, 2024"
+      orderDate: "December 5, 2024",
     },
     {
       id: 3,
@@ -90,8 +90,8 @@ export default function PatientDashboard() {
       amount: "60 Tablets",
       prescriber: "Dr. Williams",
       status: "In Transit",
-      orderDate: "December 15, 2024"
-    }
+      orderDate: "December 15, 2024",
+    },
   ];
 
   const getStatusColor = (status: string) => {
@@ -208,19 +208,40 @@ export default function PatientDashboard() {
 
                 {/* RX Orders */}
                 <div className="bg-white rounded-2xl p-6 shadow-sm">
-                  <h3 className="text-2xl font-bold text-[#464255] mb-2">RX Orders</h3>
-                  <p className="text-sm text-[#000] mb-6">Two Prescription Coming Today at 3:00pm</p>
+                  <h3 className="text-2xl font-bold text-[#464255] mb-2">
+                    RX Orders
+                  </h3>
+                  <p className="text-sm text-[#000] mb-6">
+                    Two Prescription Coming Today at 3:00pm
+                  </p>
                   <div className="grid grid-cols-3 gap-6">
                     {[
-                      { label: "Incomming", value: "1", detail: "Click to View Detail" },
-                      { label: "Coming Today", value: "2", detail: "Click to View Detail" },
-                      { label: "Delivered", value: "1", detail: "Click to View Detail" },
+                      {
+                        label: "Incomming",
+                        value: "1",
+                        detail: "Click to View Detail",
+                      },
+                      {
+                        label: "Coming Today",
+                        value: "2",
+                        detail: "Click to View Detail",
+                      },
+                      {
+                        label: "Delivered",
+                        value: "1",
+                        detail: "Click to View Detail",
+                      },
                     ].map((item, index) => (
-                      <div key={index} className="flex flex-col items-center gap-4">
+                      <div
+                        key={index}
+                        className="flex flex-col items-center gap-4"
+                      >
                         <div className="w-20 h-40 rounded-full border-2 border-[#000] flex items-center justify-center text-4xl font-bold">
                           {item.value}
                         </div>
-                        <p className="text-sm font-medium text-[#000]">{item.label}</p>
+                        <p className="text-sm font-medium text-[#000]">
+                          {item.label}
+                        </p>
                         <p className="text-xs text-[#000] underline cursor-pointer hover:font-bold">
                           {item.detail}
                         </p>
@@ -231,7 +252,9 @@ export default function PatientDashboard() {
 
                 {/* Make Personal Request */}
                 <div className="bg-white rounded-2xl p-6 shadow-sm">
-                  <h3 className="text-2xl font-bold text-[#464255] mb-6">Make Personal Request</h3>
+                  <h3 className="text-2xl font-bold text-[#464255] mb-6">
+                    Make Personal Request
+                  </h3>
                   <div className="w-full bg-[#F3F2F7] rounded-3xl px-6 py-4 mb-8">
                     <input
                       type="text"
@@ -240,7 +263,9 @@ export default function PatientDashboard() {
                     />
                   </div>
 
-                  <h4 className="text-3xl font-bold text-[#000] mb-6">Quick Purchase</h4>
+                  <h4 className="text-3xl font-bold text-[#000] mb-6">
+                    Quick Purchase
+                  </h4>
                   <div className="grid grid-cols-3 gap-6">
                     {[
                       { name: "Benadryl Allergy Relief", price: "$7.99" },
@@ -249,8 +274,12 @@ export default function PatientDashboard() {
                     ].map((product, index) => (
                       <div key={index} className="flex flex-col gap-4">
                         <div className="w-full h-32 bg-gray-300 rounded-lg"></div>
-                        <h5 className="text-sm font-bold text-[#000] underline">{product.name}</h5>
-                        <p className="text-sm font-bold text-[#000]">{product.price}</p>
+                        <h5 className="text-sm font-bold text-[#000] underline">
+                          {product.name}
+                        </h5>
+                        <p className="text-sm font-bold text-[#000]">
+                          {product.price}
+                        </p>
                         <button className="px-4 py-2 bg-[#6366F1] text-white rounded-lg font-bold text-sm hover:bg-[#5558E3] transition-colors">
                           Add to Cart
                         </button>
@@ -264,19 +293,31 @@ export default function PatientDashboard() {
               <div className="space-y-6">
                 {/* Pharmacy Info */}
                 <div className="bg-white rounded-2xl p-6 shadow-sm">
-                  <h3 className="text-2xl font-bold text-[#000] mb-4">Main Pharmacy of Choice</h3>
+                  <h3 className="text-2xl font-bold text-[#000] mb-4">
+                    Main Pharmacy of Choice
+                  </h3>
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/de35f8489c4efd7d454814d0002bd10df0facd37?width=530"
                     alt="CVS Pharmacy"
                     className="w-full h-24 object-cover rounded-lg mb-4"
                   />
-                  <p className="text-sm font-bold text-[#000] mb-2">CVS 10181 Reseda Blvd</p>
+                  <p className="text-sm font-bold text-[#000] mb-2">
+                    CVS 10181 Reseda Blvd
+                  </p>
                   <p className="text-sm text-[#000]">(818)993-4125</p>
-                  <p className="text-sm text-[#000]">Open 10 AM · Closes 12 AM</p>
+                  <p className="text-sm text-[#000]">
+                    Open 10 AM · Closes 12 AM
+                  </p>
                   <div className="mt-4 flex gap-4 text-sm font-bold text-[#000]">
-                    <a href="#" className="underline hover:text-[#6366F1]">Website</a>
-                    <a href="#" className="underline hover:text-[#6366F1]">Contact</a>
-                    <a href="#" className="underline hover:text-[#6366F1]">Change</a>
+                    <a href="#" className="underline hover:text-[#6366F1]">
+                      Website
+                    </a>
+                    <a href="#" className="underline hover:text-[#6366F1]">
+                      Contact
+                    </a>
+                    <a href="#" className="underline hover:text-[#6366F1]">
+                      Change
+                    </a>
                   </div>
                 </div>
 
@@ -319,7 +360,9 @@ export default function PatientDashboard() {
                       placeholder="Type your message..."
                       value={messageInput}
                       onChange={(e) => setMessageInput(e.target.value)}
-                      onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                      onKeyPress={(e) =>
+                        e.key === "Enter" && handleSendMessage()
+                      }
                       className="flex-1 bg-white bg-opacity-20 text-white rounded-lg px-3 py-2 outline-none placeholder:text-[#999]"
                     />
                     <button
@@ -335,8 +378,12 @@ export default function PatientDashboard() {
           ) : activeMenu === "Order History" ? (
             <div className="p-8">
               <div className="mb-8">
-                <h1 className="text-4xl font-bold text-[#464255] mb-2">Order History</h1>
-                <p className="text-[#A3A3A3]">View and manage your medication orders</p>
+                <h1 className="text-4xl font-bold text-[#464255] mb-2">
+                  Order History
+                </h1>
+                <p className="text-[#A3A3A3]">
+                  View and manage your medication orders
+                </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {patientOrders.map((order) => (
@@ -346,21 +393,37 @@ export default function PatientDashboard() {
                     className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer border-l-4 border-[#2D9CDB]"
                   >
                     <div className="mb-4">
-                      <h3 className="text-lg font-bold text-[#000] mb-1">{order.medication}</h3>
-                      <p className="text-sm text-[#A3A3A3]">{order.orderDate}</p>
+                      <h3 className="text-lg font-bold text-[#000] mb-1">
+                        {order.medication}
+                      </h3>
+                      <p className="text-sm text-[#A3A3A3]">
+                        {order.orderDate}
+                      </p>
                     </div>
                     <div className="space-y-3 mb-4">
                       <div>
-                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Quantity</p>
-                        <p className="text-sm font-bold text-[#464255]">{order.amount}</p>
+                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                          Quantity
+                        </p>
+                        <p className="text-sm font-bold text-[#464255]">
+                          {order.amount}
+                        </p>
                       </div>
                       <div>
-                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Prescriber</p>
-                        <p className="text-sm font-bold text-[#464255]">{order.prescriber}</p>
+                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                          Prescriber
+                        </p>
+                        <p className="text-sm font-bold text-[#464255]">
+                          {order.prescriber}
+                        </p>
                       </div>
                       <div>
-                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Status</p>
-                        <div className={`inline-block px-3 py-1 rounded-lg text-xs font-bold ${getStatusColor(order.status)}`}>
+                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                          Status
+                        </p>
+                        <div
+                          className={`inline-block px-3 py-1 rounded-lg text-xs font-bold ${getStatusColor(order.status)}`}
+                        >
                           {order.status}
                         </div>
                       </div>
@@ -375,22 +438,37 @@ export default function PatientDashboard() {
           ) : activeMenu === "Personal Info" ? (
             <div className="p-8">
               <div className="mb-8">
-                <h1 className="text-4xl font-bold text-[#464255] mb-2">Personal Info</h1>
-                <p className="text-[#A3A3A3]">Below is your account information.</p>
+                <h1 className="text-4xl font-bold text-[#464255] mb-2">
+                  Personal Info
+                </h1>
+                <p className="text-[#A3A3A3]">
+                  Below is your account information.
+                </p>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl">
                 {/* Patient Details Card */}
                 <div className="bg-white rounded-2xl p-8 shadow-sm">
-                  <h2 className="text-2xl font-bold text-[#000] mb-6">Patient Details</h2>
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">
+                    Patient Details
+                  </h2>
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg font-bold text-[#000] mb-2">{patientInfo.name}</h3>
-                      <p className="text-sm text-[#666]">Date of Birth: {patientInfo.dob}</p>
+                      <h3 className="text-lg font-bold text-[#000] mb-2">
+                        {patientInfo.name}
+                      </h3>
+                      <p className="text-sm text-[#666]">
+                        Date of Birth: {patientInfo.dob}
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Address</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.address}</p>
-                      <p className="text-sm text-[#666]">{patientInfo.city}, {patientInfo.state} {patientInfo.zip}</p>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.address}
+                      </p>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.city}, {patientInfo.state}{" "}
+                        {patientInfo.zip}
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Phone</h4>
@@ -405,52 +483,83 @@ export default function PatientDashboard() {
 
                 {/* Primary Care Doctor Card */}
                 <div className="bg-white rounded-2xl p-8 shadow-sm">
-                  <h2 className="text-2xl font-bold text-[#000] mb-6">Primary Care Doctor</h2>
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">
+                    Primary Care Doctor
+                  </h2>
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg font-bold text-[#000] mb-2">{patientInfo.doctorName}</h3>
-                      <p className="text-sm text-[#666]">{patientInfo.specialty}</p>
+                      <h3 className="text-lg font-bold text-[#000] mb-2">
+                        {patientInfo.doctorName}
+                      </h3>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.specialty}
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Clinic</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.clinic}</p>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.clinic}
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Contact</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.doctorPhone}</p>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.doctorPhone}
+                      </p>
                     </div>
                     <div className="pt-4">
-                      <a href="#" className="text-[#2D9CDB] font-bold text-sm hover:underline">Change Pharmacy</a>
+                      <a
+                        href="#"
+                        className="text-[#2D9CDB] font-bold text-sm hover:underline"
+                      >
+                        Change Pharmacy
+                      </a>
                     </div>
                   </div>
                 </div>
 
                 {/* Main Pharmacy Card */}
                 <div className="bg-white rounded-2xl p-8 shadow-sm">
-                  <h2 className="text-2xl font-bold text-[#000] mb-6">Main Pharmacy</h2>
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">
+                    Main Pharmacy
+                  </h2>
                   <div className="space-y-6">
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Plan</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.pharmacy}</p>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.pharmacy}
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Member ID</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.memberId}</p>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.memberId}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Insurance Information Card */}
                 <div className="bg-white rounded-2xl p-8 shadow-sm">
-                  <h2 className="text-2xl font-bold text-[#000] mb-6">Insurance Information</h2>
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">
+                    Insurance Information
+                  </h2>
                   <div className="space-y-6">
                     <div>
-                      <h4 className="font-bold text-[#000] mb-2">{patientInfo.insuranceProvider}</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.insuranceId}</p>
+                      <h4 className="font-bold text-[#000] mb-2">
+                        {patientInfo.insuranceProvider}
+                      </h4>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.insuranceId}
+                      </p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#000] mb-2">Group Number</h4>
-                      <p className="text-sm text-[#666]">{patientInfo.groupNumber}</p>
+                      <h4 className="font-bold text-[#000] mb-2">
+                        Group Number
+                      </h4>
+                      <p className="text-sm text-[#666]">
+                        {patientInfo.groupNumber}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -466,7 +575,9 @@ export default function PatientDashboard() {
             </div>
           ) : (
             <div className="p-8">
-              <h1 className="text-4xl font-bold text-[#464255]">{activeMenu}</h1>
+              <h1 className="text-4xl font-bold text-[#464255]">
+                {activeMenu}
+              </h1>
               <p className="text-[#A3A3A3] mt-2">This section is coming soon</p>
             </div>
           )}

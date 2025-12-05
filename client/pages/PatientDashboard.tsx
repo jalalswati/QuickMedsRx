@@ -35,7 +35,7 @@ export default function PatientDashboard() {
   return (
     <div className="min-h-screen flex bg-[#F3F2F7]">
       {/* Sidebar */}
-      <div className="w-80 bg-white shadow-sm flex flex-col p-6">
+      <div className="w-56 bg-white shadow-sm flex flex-col p-6">
         {/* Logo */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-[#333]">{username}</h2>

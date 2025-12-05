@@ -1,16 +1,49 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Index() {
+type UserRole = "pharmacy" | "patient" | "driver" | null;
+
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedRole, setSelectedRole] = useState<UserRole>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login with:", { username, password });
+    
+    if (!selectedRole) {
+      alert("Please select an account type");
+      return;
+    }
+
+    if (!username || !password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    setIsLoading(true);
+    
+    // Simulate authentication
+    setTimeout(() => {
+      setIsLoading(false);
+      // Route to appropriate dashboard based on role
+      navigate(`/${selectedRole}-dashboard`, { 
+        state: { username, role: selectedRole } 
+      });
+    }, 500);
   };
 
   const handleGoogleLogin = () => {
-    console.log("Login with Google");
+    if (!selectedRole) {
+      alert("Please select an account type first");
+      return;
+    }
+    // Simulate Google auth
+    navigate(`/${selectedRole}-dashboard`, { 
+      state: { username: "Google User", role: selectedRole } 
+    });
   };
 
   return (
@@ -26,6 +59,35 @@ export default function Index() {
             <p className="text-[#525252] text-base">
               How to i get started lorem ipsum dolor at?
             </p>
+          </div>
+
+          {/* Role Selection */}
+          <div className="mb-6 space-y-3">
+            <p className="text-sm font-semibold text-[#464255]">Select Account Type</p>
+            <div className="space-y-2">
+              {[
+                { value: "pharmacy", label: "Pharmacy Admin" },
+                { value: "patient", label: "Patient/Customer" },
+                { value: "driver", label: "Delivery Driver" }
+              ].map((option) => (
+                <label key={option.value} className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 transition-all"
+                  style={{
+                    borderColor: selectedRole === option.value ? "#6366F1" : "#F0EDFF",
+                    backgroundColor: selectedRole === option.value ? "#F0EDFF" : "transparent"
+                  }}
+                >
+                  <input
+                    type="radio"
+                    name="role"
+                    value={option.value}
+                    checked={selectedRole === option.value}
+                    onChange={(e) => setSelectedRole(e.target.value as UserRole)}
+                    className="w-4 h-4 cursor-pointer"
+                  />
+                  <span className="text-sm font-medium text-[#464255]">{option.label}</span>
+                </label>
+              ))}
+            </div>
           </div>
 
           {/* Login Form */}
@@ -86,9 +148,10 @@ export default function Index() {
             <div className="pt-6 flex justify-center">
               <button
                 type="submit"
-                className="h-[52px] px-[30px] rounded-2xl bg-[#6366F1] hover:bg-[#5558E3] text-white font-bold text-xs shadow-[0_8px_21px_0_rgba(0,0,0,0.16)] transition-colors"
+                disabled={isLoading}
+                className="h-[52px] px-[30px] rounded-2xl bg-[#6366F1] hover:bg-[#5558E3] disabled:bg-[#9CA3AF] text-white font-bold text-xs shadow-[0_8px_21px_0_rgba(0,0,0,0.16)] transition-colors"
               >
-                Login Now
+                {isLoading ? "Logging in..." : "Login Now"}
               </button>
             </div>
           </form>
@@ -108,6 +171,7 @@ export default function Index() {
 
           {/* Google Login Button */}
           <button
+            type="button"
             onClick={handleGoogleLogin}
             className="w-full h-[52px] rounded-2xl border border-[#F0EDFF] hover:border-[#6366F1] hover:bg-[#F9F9F9] transition-colors flex items-center justify-center gap-2"
           >

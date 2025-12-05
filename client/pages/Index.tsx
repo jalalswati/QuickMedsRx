@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 type UserRole = "pharmacy" | "patient" | "driver" | null;
 
@@ -173,7 +173,7 @@ export default function Login() {
           <button
             type="button"
             onClick={handleGoogleLogin}
-            className="w-full h-[52px] rounded-2xl border border-[#F0EDFF] hover:border-[#6366F1] hover:bg-[#F9F9F9] transition-colors flex items-center justify-center gap-2"
+            className="w-full h-[52px] rounded-2xl border border-[#F0EDFF] hover:border-[#6366F1] hover:bg-[#F9F9F9] transition-colors flex items-center justify-center gap-2 mb-6"
           >
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/4e16db72036302a9f7ceeb1f21f1503c6624951b?width=60"
@@ -184,6 +184,16 @@ export default function Login() {
               Login with <span className="font-bold">google</span>
             </span>
           </button>
+
+          {/* Sign Up Link */}
+          <div className="text-center">
+            <p className="text-sm text-[#525252]">
+              Don't have an account?{" "}
+              <Link to="/sign-up" className="text-[#6366F1] font-bold hover:underline">
+                Sign Up
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
 

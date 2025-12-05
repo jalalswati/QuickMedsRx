@@ -26,8 +26,8 @@ export default function DriverDashboard() {
       <div className="w-80 bg-white shadow-sm flex flex-col p-8 rounded-3xl m-6">
         {/* Logo */}
         <div className="mb-10">
-          <h2 className="text-2xl font-bold text-[#333]">Jamal Khan</h2>
-          <p className="text-sm text-[#B9BBBD]">Valiant Patient</p>
+          <h2 className="text-2xl font-bold text-[#333]">{username}</h2>
+          <p className="text-sm text-[#B9BBBD]">Driver Dashboard</p>
         </div>
 
         {/* Menu */}

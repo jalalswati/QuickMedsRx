@@ -16,12 +16,9 @@ export default function PharmacyOrderList() {
   const menuItems = [
     { label: "Dashboard", path: "/pharmacy-dashboard", active: false },
     { label: "Order List", path: "/pharmacy-order-list", active: true },
-    { label: "Customer", path: "/pharmacy-customer", active: false },
     { label: "Analytics", path: "/pharmacy-analytics", active: false },
     { label: "Reviews", path: "/pharmacy-reviews", active: false },
-    { label: "Customer Detail", path: "/pharmacy-customer-detail", active: false },
     { label: "Calendar", path: "/pharmacy-calendar", active: false },
-    { label: "Chat", path: "/pharmacy-chat", active: false },
   ];
 
   const currentOrders = [

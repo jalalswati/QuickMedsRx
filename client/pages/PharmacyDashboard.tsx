@@ -16,12 +16,9 @@ export default function PharmacyDashboard() {
   const menuItems = [
     { icon: "🏠", label: "Dashboard", path: "/pharmacy-dashboard", active: true },
     { icon: "📋", label: "Order List", path: "/pharmacy-order-list", active: false },
-    { icon: "👥", label: "Customer", path: "/pharmacy-customer", active: false },
     { icon: "📊", label: "Analytics", path: "/pharmacy-analytics", active: false },
     { icon: "✏️", label: "Reviews", path: "/pharmacy-reviews", active: false },
-    { icon: "👤", label: "Customer Detail", path: "/pharmacy-customer-detail", active: false },
     { icon: "📅", label: "Calendar", path: "/pharmacy-calendar", active: false },
-    { icon: "💬", label: "Chat", path: "/pharmacy-chat", active: false },
   ];
 
   return (

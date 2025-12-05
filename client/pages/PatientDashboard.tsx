@@ -8,6 +8,26 @@ export default function PatientDashboard() {
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("Dashboard");
   const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
+  const [isEditingPersonalInfo, setIsEditingPersonalInfo] = useState(false);
+  const [patientInfo, setPatientInfo] = useState({
+    name: "Jamal Swati",
+    dob: "08/14/99",
+    address: "12411 Victory Blvd",
+    city: "Los Angeles",
+    state: "CA",
+    zip: "91606",
+    phone: "(815) 555-1294",
+    email: "jamal.swati@gmail.com",
+    doctorName: "Dr. Kevin Ramirez",
+    specialty: "Family Medicine",
+    clinic: "Cedars-Sinai Medical Group",
+    doctorPhone: "(323) 994-2200",
+    pharmacy: "Blue Shield PPO",
+    memberId: "BSX-29476293",
+    insuranceProvider: "Blue Shield PPO",
+    insuranceId: "BSX-29478293",
+    groupNumber: "G-85291",
+  });
   const [chatMessages, setChatMessages] = useState<
     Array<{ text: string; isUser: boolean }>
   >([

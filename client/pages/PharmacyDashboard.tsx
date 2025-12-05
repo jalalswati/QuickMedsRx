@@ -1,10 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import OrderDetailModal from "../components/OrderDetailModal";
 
 export default function PharmacyDashboard() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const username = location.state?.username || "Samantha";
 
   const handleLogout = () => {
@@ -14,7 +16,6 @@ export default function PharmacyDashboard() {
   const menuItems = [
     { icon: "🏠", label: "Dashboard", path: "/pharmacy-dashboard", active: true },
     { icon: "📋", label: "Order List", path: "/pharmacy-order-list", active: false },
-    { icon: "📄", label: "Order Detail", path: "/pharmacy-order-detail", active: false },
     { icon: "👥", label: "Customer", path: "/pharmacy-customer", active: false },
     { icon: "📊", label: "Analytics", path: "/pharmacy-analytics", active: false },
     { icon: "✏️", label: "Reviews", path: "/pharmacy-reviews", active: false },
@@ -169,7 +170,7 @@ export default function PharmacyDashboard() {
               ].map((order) => (
                 <div
                   key={order.id}
-                  onClick={() => navigate("/pharmacy-order-detail", { state: { username, orderId: order.id } })}
+                  onClick={() => setSelectedOrderId(order.id)}
                   className="flex gap-4 p-4 bg-[#F3F2F7] rounded-2xl hover:bg-[#E8E8F5] hover:shadow-md transition-all cursor-pointer"
                 >
                   <div className="flex-1">
@@ -187,6 +188,15 @@ export default function PharmacyDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Order Detail Modal */}
+      {selectedOrderId && (
+        <OrderDetailModal
+          isOpen={true}
+          orderId={selectedOrderId}
+          onClose={() => setSelectedOrderId(null)}
+        />
+      )}
     </div>
   );
 }

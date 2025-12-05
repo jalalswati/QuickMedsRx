@@ -73,6 +73,19 @@ export default function PatientDashboard() {
     }
   ];
 
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Delivered":
+        return "bg-[#00B074] text-white";
+      case "In Transit":
+        return "bg-[#2D9CDB] text-white";
+      case "Processing":
+        return "bg-[#F7C604] text-black";
+      default:
+        return "bg-gray-300 text-black";
+    }
+  };
+
   return (
     <div className="min-h-screen flex bg-[#F3F2F7]">
       {/* Sidebar */}
@@ -162,182 +175,199 @@ export default function PatientDashboard() {
 
         {/* Dashboard Content */}
         <div className="flex-1 overflow-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-8">
-            {/* Left Section */}
-            <div className="lg:col-span-3 space-y-6">
-              <div>
-                <h1 className="text-4xl font-bold text-[#464255] mb-1">
-                  Dashboard
-                </h1>
-              </div>
+          {activeMenu === "Dashboard" ? (
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-8">
+              {/* Left Section */}
+              <div className="lg:col-span-3 space-y-6">
+                <div>
+                  <h1 className="text-4xl font-bold text-[#464255] mb-1">
+                    Dashboard
+                  </h1>
+                </div>
 
-              {/* RX Orders */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-[#464255] mb-2">
-                  RX Orders
-                </h3>
-                <p className="text-sm text-[#000] mb-6">
-                  Two Prescription Coming Today at 3:00pm
-                </p>
-                <div className="grid grid-cols-3 gap-6">
-                  {[
-                    {
-                      label: "Incomming",
-                      value: "1",
-                      detail: "Click to View Detail",
-                    },
-                    {
-                      label: "Coming Today",
-                      value: "2",
-                      detail: "Click to View Detail",
-                    },
-                    {
-                      label: "Delivered",
-                      value: "1",
-                      detail: "Click to View Detail",
-                    },
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center gap-4"
-                    >
-                      <div className="w-20 h-40 rounded-full border-2 border-[#000] flex items-center justify-center text-4xl font-bold">
-                        {item.value}
+                {/* RX Orders */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h3 className="text-2xl font-bold text-[#464255] mb-2">RX Orders</h3>
+                  <p className="text-sm text-[#000] mb-6">Two Prescription Coming Today at 3:00pm</p>
+                  <div className="grid grid-cols-3 gap-6">
+                    {[
+                      { label: "Incomming", value: "1", detail: "Click to View Detail" },
+                      { label: "Coming Today", value: "2", detail: "Click to View Detail" },
+                      { label: "Delivered", value: "1", detail: "Click to View Detail" },
+                    ].map((item, index) => (
+                      <div key={index} className="flex flex-col items-center gap-4">
+                        <div className="w-20 h-40 rounded-full border-2 border-[#000] flex items-center justify-center text-4xl font-bold">
+                          {item.value}
+                        </div>
+                        <p className="text-sm font-medium text-[#000]">{item.label}</p>
+                        <p className="text-xs text-[#000] underline cursor-pointer hover:font-bold">
+                          {item.detail}
+                        </p>
                       </div>
-                      <p className="text-sm font-medium text-[#000]">
-                        {item.label}
-                      </p>
-                      <p className="text-xs text-[#000] underline cursor-pointer hover:font-bold">
-                        {item.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Make Personal Request */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-[#464255] mb-6">
-                  Make Personal Request
-                </h3>
-                <div className="w-full bg-[#F3F2F7] rounded-3xl px-6 py-4 mb-8">
-                  <input
-                    type="text"
-                    placeholder="Type Your Rx Here..."
-                    className="w-full bg-transparent outline-none text-2xl font-bold text-[#D5D5D5]"
-                  />
-                </div>
-
-                <h4 className="text-3xl font-bold text-[#000] mb-6">
-                  Quick Purchase
-                </h4>
-                <div className="grid grid-cols-3 gap-6">
-                  {[
-                    { name: "Benadryl Allergy Relief", price: "$7.99" },
-                    { name: "Tylenol Pain Relief", price: "$5.99" },
-                    { name: "Pepto Bismol Stomach Relief", price: "$9.99" },
-                  ].map((product, index) => (
-                    <div key={index} className="flex flex-col gap-4">
-                      <div className="w-full h-32 bg-gray-300 rounded-lg"></div>
-                      <h5 className="text-sm font-bold text-[#000] underline">
-                        {product.name}
-                      </h5>
-                      <p className="text-sm font-bold text-[#000]">
-                        {product.price}
-                      </p>
-                      <button className="px-4 py-2 bg-[#6366F1] text-white rounded-lg font-bold text-sm hover:bg-[#5558E3] transition-colors">
-                        Add to Cart
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Section */}
-            <div className="space-y-6">
-              {/* Pharmacy Info */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-[#000] mb-4">
-                  Main Pharmacy of Choice
-                </h3>
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/de35f8489c4efd7d454814d0002bd10df0facd37?width=530"
-                  alt="CVS Pharmacy"
-                  className="w-full h-24 object-cover rounded-lg mb-4"
-                />
-                <p className="text-sm font-bold text-[#000] mb-2">
-                  CVS 10181 Reseda Blvd
-                </p>
-                <p className="text-sm text-[#000]">(818)993-4125</p>
-                <p className="text-sm text-[#000]">Open 10 AM · Closes 12 AM</p>
-                <div className="mt-4 flex gap-4 text-sm font-bold text-[#000]">
-                  <a href="#" className="underline hover:text-[#6366F1]">
-                    Website
-                  </a>
-                  <a href="#" className="underline hover:text-[#6366F1]">
-                    Contact
-                  </a>
-                  <a href="#" className="underline hover:text-[#6366F1]">
-                    Change
-                  </a>
-                </div>
-              </div>
-
-              {/* Chat */}
-              <div className="bg-gradient-to-b from-[#5A5A7F] to-[#3A3A5F] rounded-2xl shadow-sm flex flex-col h-96">
-                {/* Chat Header */}
-                <div className="border-b border-[#898989] p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-[#6366F1] rounded-lg flex items-center justify-center">
-                      <span className="text-white text-sm">M</span>
-                    </div>
-                    <span className="text-white font-bold">Medi</span>
+                    ))}
                   </div>
                 </div>
 
-                {/* Chat Messages */}
-                <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                  {chatMessages.map((msg, index) => (
-                    <div
-                      key={index}
-                      className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
-                    >
-                      <div
-                        className={`max-w-xs px-4 py-2 rounded-2xl ${
-                          msg.isUser
-                            ? "bg-[#6366F1] text-white"
-                            : "bg-white bg-opacity-20 text-white"
-                        }`}
-                      >
-                        <p className="text-sm">{msg.text}</p>
+                {/* Make Personal Request */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h3 className="text-2xl font-bold text-[#464255] mb-6">Make Personal Request</h3>
+                  <div className="w-full bg-[#F3F2F7] rounded-3xl px-6 py-4 mb-8">
+                    <input
+                      type="text"
+                      placeholder="Type Your Rx Here..."
+                      className="w-full bg-transparent outline-none text-2xl font-bold text-[#D5D5D5]"
+                    />
+                  </div>
+
+                  <h4 className="text-3xl font-bold text-[#000] mb-6">Quick Purchase</h4>
+                  <div className="grid grid-cols-3 gap-6">
+                    {[
+                      { name: "Benadryl Allergy Relief", price: "$7.99" },
+                      { name: "Tylenol Pain Relief", price: "$5.99" },
+                      { name: "Pepto Bismol Stomach Relief", price: "$9.99" },
+                    ].map((product, index) => (
+                      <div key={index} className="flex flex-col gap-4">
+                        <div className="w-full h-32 bg-gray-300 rounded-lg"></div>
+                        <h5 className="text-sm font-bold text-[#000] underline">{product.name}</h5>
+                        <p className="text-sm font-bold text-[#000]">{product.price}</p>
+                        <button className="px-4 py-2 bg-[#6366F1] text-white rounded-lg font-bold text-sm hover:bg-[#5558E3] transition-colors">
+                          Add to Cart
+                        </button>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div className="space-y-6">
+                {/* Pharmacy Info */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h3 className="text-2xl font-bold text-[#000] mb-4">Main Pharmacy of Choice</h3>
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/de35f8489c4efd7d454814d0002bd10df0facd37?width=530"
+                    alt="CVS Pharmacy"
+                    className="w-full h-24 object-cover rounded-lg mb-4"
+                  />
+                  <p className="text-sm font-bold text-[#000] mb-2">CVS 10181 Reseda Blvd</p>
+                  <p className="text-sm text-[#000]">(818)993-4125</p>
+                  <p className="text-sm text-[#000]">Open 10 AM · Closes 12 AM</p>
+                  <div className="mt-4 flex gap-4 text-sm font-bold text-[#000]">
+                    <a href="#" className="underline hover:text-[#6366F1]">Website</a>
+                    <a href="#" className="underline hover:text-[#6366F1]">Contact</a>
+                    <a href="#" className="underline hover:text-[#6366F1]">Change</a>
+                  </div>
                 </div>
 
-                {/* Chat Input */}
-                <div className="border-t border-[#898989] p-4 flex gap-2">
-                  <input
-                    type="text"
-                    placeholder="Type your message..."
-                    value={messageInput}
-                    onChange={(e) => setMessageInput(e.target.value)}
-                    onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-                    className="flex-1 bg-white bg-opacity-20 text-white rounded-lg px-3 py-2 outline-none placeholder:text-[#999]"
-                  />
-                  <button
-                    onClick={handleSendMessage}
-                    className="w-10 h-10 bg-[#6366F1] rounded-lg flex items-center justify-center text-white hover:bg-[#5558E3] transition-colors"
-                  >
-                    ➤
-                  </button>
+                {/* Chat */}
+                <div className="bg-gradient-to-b from-[#5A5A7F] to-[#3A3A5F] rounded-2xl shadow-sm flex flex-col h-96">
+                  {/* Chat Header */}
+                  <div className="border-b border-[#898989] p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-[#6366F1] rounded-lg flex items-center justify-center">
+                        <span className="text-white text-sm">M</span>
+                      </div>
+                      <span className="text-white font-bold">Medi</span>
+                    </div>
+                  </div>
+
+                  {/* Chat Messages */}
+                  <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                    {chatMessages.map((msg, index) => (
+                      <div
+                        key={index}
+                        className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
+                      >
+                        <div
+                          className={`max-w-xs px-4 py-2 rounded-2xl ${
+                            msg.isUser
+                              ? "bg-[#6366F1] text-white"
+                              : "bg-white bg-opacity-20 text-white"
+                          }`}
+                        >
+                          <p className="text-sm">{msg.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Chat Input */}
+                  <div className="border-t border-[#898989] p-4 flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Type your message..."
+                      value={messageInput}
+                      onChange={(e) => setMessageInput(e.target.value)}
+                      onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                      className="flex-1 bg-white bg-opacity-20 text-white rounded-lg px-3 py-2 outline-none placeholder:text-[#999]"
+                    />
+                    <button
+                      onClick={handleSendMessage}
+                      className="w-10 h-10 bg-[#6366F1] rounded-lg flex items-center justify-center text-white hover:bg-[#5558E3] transition-colors"
+                    >
+                      ➤
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ) : activeMenu === "Order History" ? (
+            <div className="p-8">
+              <div className="mb-8">
+                <h1 className="text-4xl font-bold text-[#464255] mb-2">Order History</h1>
+                <p className="text-[#A3A3A3]">View and manage your medication orders</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {patientOrders.map((order) => (
+                  <div
+                    key={order.id}
+                    onClick={() => setSelectedOrderId(order.id)}
+                    className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer border-l-4 border-[#2D9CDB]"
+                  >
+                    <div className="mb-4">
+                      <h3 className="text-lg font-bold text-[#000] mb-1">{order.medication}</h3>
+                      <p className="text-sm text-[#A3A3A3]">{order.orderDate}</p>
+                    </div>
+                    <div className="space-y-3 mb-4">
+                      <div>
+                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Quantity</p>
+                        <p className="text-sm font-bold text-[#464255]">{order.amount}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Prescriber</p>
+                        <p className="text-sm font-bold text-[#464255]">{order.prescriber}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Status</p>
+                        <div className={`inline-block px-3 py-1 rounded-lg text-xs font-bold ${getStatusColor(order.status)}`}>
+                          {order.status}
+                        </div>
+                      </div>
+                    </div>
+                    <button className="w-full px-4 py-2 bg-[#6366F1] text-white rounded-lg text-xs font-bold hover:bg-[#5558E3] transition-colors">
+                      View Details
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="p-8">
+              <h1 className="text-4xl font-bold text-[#464255]">{activeMenu}</h1>
+              <p className="text-[#A3A3A3] mt-2">This section is coming soon</p>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Order Detail Modal */}
+      {selectedOrderId && (
+        <PatientOrderDetailModal
+          isOpen={true}
+          orderId={selectedOrderId}
+          onClose={() => setSelectedOrderId(null)}
+        />
+      )}
     </div>
   );
 }

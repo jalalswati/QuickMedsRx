@@ -147,70 +147,40 @@ export default function PharmacyDashboard() {
             ))}
           </div>
 
-          {/* Charts Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Patient Orders Chart */}
-            <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-[#464255]">Patient Orders</h3>
-                  <p className="text-sm text-[#B9BBBD]">Lorem ipsum dolor sit amet, consectetur adip</p>
-                </div>
-                <button className="px-4 py-2 border border-[#2D9CDB] text-[#2D9CDB] rounded-lg text-sm font-bold hover:bg-[#2D9CDB] hover:text-white transition-colors">
-                  ⬇ Save Report
-                </button>
+          {/* Patient Orders - Recent Orders */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-2xl font-bold text-[#464255]">Patient Orders</h3>
+                <p className="text-sm text-[#B9BBBD]">Recent orders - click to view details</p>
               </div>
-              <div className="h-48 bg-gradient-to-br from-[#6EC8EF] to-white rounded-lg"></div>
-              <div className="grid grid-cols-7 gap-2 mt-6 text-center text-xs text-[#464255]">
-                <div>Sunday</div>
-                <div>Monday</div>
-                <div>Tuesday</div>
-                <div>Wednesday</div>
-                <div>Thursday</div>
-                <div>Friday</div>
-                <div>Saturday</div>
-              </div>
+              <button
+                onClick={() => navigate("/pharmacy-order-list", { state: { username } })}
+                className="px-4 py-2 border border-[#2D9CDB] text-[#2D9CDB] rounded-lg text-sm font-bold hover:bg-[#2D9CDB] hover:text-white transition-colors"
+              >
+                View All
+              </button>
             </div>
 
-            {/* Prescription Chart */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-[#464255]">Prescription Chart</h3>
-              </div>
-              <div className="h-48 bg-gradient-to-br from-[#FF5B5B] to-[#FFB3B3] rounded-lg"></div>
-              <div className="grid grid-cols-2 gap-2 mt-6 text-xs text-[#464255] text-center">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Customer Orders */}
-          <div className="mt-8 bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-2xl font-bold text-[#464255] mb-6">Customer Orders</h3>
-            <div className="space-y-4">
-              {[1, 2].map((item) => (
-                <div key={item} className="flex gap-4 p-4 bg-[#F3F2F7] rounded-2xl">
-                  <img
-                    src="https://api.builder.io/api/v1/image/assets/TEMP/0345a42aa19f08f5d968f7636279968bee90c2d5?width=112"
-                    alt="Avatar"
-                    className="w-16 h-16 rounded-full"
-                  />
+            <div className="space-y-3">
+              {[
+                { id: 1, name: "Samantha Sanchez", medication: "Omeprazole", amount: "12 Tablets", description: "Tell Patient!!! - need to take 3 times a day with water" },
+                { id: 2, name: "John Smith", medication: "Ibuprofen", amount: "30 Tablets", description: "Take 1-2 tablets every 4-6 hours as needed for pain" }
+              ].map((order) => (
+                <div
+                  key={order.id}
+                  onClick={() => navigate("/pharmacy-order-detail", { state: { username, orderId: order.id } })}
+                  className="flex gap-4 p-4 bg-[#F3F2F7] rounded-2xl hover:bg-[#E8E8F5] hover:shadow-md transition-all cursor-pointer"
+                >
                   <div className="flex-1">
-                    <h4 className="font-bold text-[#000]">Samantha Sanchez</h4>
-                    <div className="mt-2 flex gap-4">
-                      <div>
-                        <p className="text-xs font-bold text-[#000]">Prescription Type:</p>
-                        <div className="border border-[#000] rounded-2xl p-3 mt-1">
-                          <p className="text-xs font-bold">Omeprazole</p>
-                          <p className="text-xs">Amount: 12 Tablets</p>
-                          <p className="text-xs">Description: Tell Patient!!! - need to take 3 times a day with water</p>
-                        </div>
-                      </div>
+                    <h4 className="font-bold text-[#000] mb-2">{order.name}</h4>
+                    <div className="bg-white border border-[#DDD] rounded-lg p-3">
+                      <p className="text-xs font-bold text-[#000] mb-1">{order.medication}</p>
+                      <p className="text-xs text-[#666]">Amount: {order.amount}</p>
+                      <p className="text-xs text-[#666] mt-1">{order.description}</p>
                     </div>
                   </div>
+                  <div className="flex items-center justify-center text-[#2D9CDB] text-xl">→</div>
                 </div>
               ))}
             </div>

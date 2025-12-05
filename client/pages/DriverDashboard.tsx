@@ -65,7 +65,7 @@ export default function DriverDashboard() {
 
         {/* Map Section */}
         <div className="bg-white rounded-3xl p-8 shadow-sm mb-6">
-          <div className="relative w-full h-96 bg-gradient-to-br from-[#90EE90] to-[#B0E0E6] rounded-3xl overflow-hidden border-4 border-white">
+          <div className="relative w-full h-96 bg-gradient-to-br from-[#90EE90] to-[#B0E0E6] rounded-3xl overflow-hidden border-2 border-white">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/21c40d3234f3564d286b1bf7d69bd9730f6efa8e?width=2183"
               alt="Map"

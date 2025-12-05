@@ -351,6 +351,95 @@ export default function PatientDashboard() {
                 ))}
               </div>
             </div>
+          ) : activeMenu === "Personal Info" ? (
+            <div className="p-8">
+              <div className="mb-8">
+                <h1 className="text-4xl font-bold text-[#464255] mb-2">Personal Info</h1>
+                <p className="text-[#A3A3A3]">Below is your account information.</p>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl">
+                {/* Patient Details Card */}
+                <div className="bg-white rounded-2xl p-8 shadow-sm">
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">Patient Details</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-bold text-[#000] mb-2">Jamal Swati</h3>
+                      <p className="text-sm text-[#666]">Date of Birth: 08/14/99</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Address</h4>
+                      <p className="text-sm text-[#666]">12411 Victory Blvd</p>
+                      <p className="text-sm text-[#666]">Los Angeles, CA 91606</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Phone</h4>
+                      <p className="text-sm text-[#666]">(815) 555-1294</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Email</h4>
+                      <p className="text-sm text-[#666]">jamal.swati@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Primary Care Doctor Card */}
+                <div className="bg-white rounded-2xl p-8 shadow-sm">
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">Primary Care Doctor</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-bold text-[#000] mb-2">Dr. Kevin Ramirez</h3>
+                      <p className="text-sm text-[#666]">Family Medicine</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Clinic</h4>
+                      <p className="text-sm text-[#666]">Cedars-Sinai Medical Group</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Contact</h4>
+                      <p className="text-sm text-[#666]">(323) 994-2200</p>
+                    </div>
+                    <div className="pt-4">
+                      <a href="#" className="text-[#2D9CDB] font-bold text-sm hover:underline">Change Pharmacy</a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Pharmacy Card */}
+                <div className="bg-white rounded-2xl p-8 shadow-sm">
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">Main Pharmacy</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Plan</h4>
+                      <p className="text-sm text-[#666]">Blue Shield PPO</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Member ID</h4>
+                      <p className="text-sm text-[#666]">BSX-29476293</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Insurance Information Card */}
+                <div className="bg-white rounded-2xl p-8 shadow-sm">
+                  <h2 className="text-2xl font-bold text-[#000] mb-6">Insurance Information</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Blue Shield PPO</h4>
+                      <p className="text-sm text-[#666]">BSX-29478293</p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#000] mb-2">Group Number</h4>
+                      <p className="text-sm text-[#666]">G-85291</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="max-w-6xl mt-8">
+                <button className="w-full lg:w-auto px-8 py-3 bg-[#2D9CDB] text-white rounded-lg font-bold hover:bg-[#1E7FB5] transition-colors">
+                  Edit Personal Info
+                </button>
+              </div>
+            </div>
           ) : (
             <div className="p-8">
               <h1 className="text-4xl font-bold text-[#464255]">{activeMenu}</h1>

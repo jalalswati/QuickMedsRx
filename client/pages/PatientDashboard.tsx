@@ -5,6 +5,8 @@ import PatientOrderDetailModal from "../components/PatientOrderDetailModal";
 export default function PatientDashboard() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [activeMenu, setActiveMenu] = useState("Dashboard");
+  const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const [chatMessages, setChatMessages] = useState<
     Array<{ text: string; isUser: boolean }>
   >([

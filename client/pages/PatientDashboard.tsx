@@ -431,11 +431,11 @@ export default function PatientDashboard() {
                   <div className="space-y-6">
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Plan</h4>
-                      <p className="text-sm text-[#666]">Blue Shield PPO</p>
+                      <p className="text-sm text-[#666]">{patientInfo.pharmacy}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Member ID</h4>
-                      <p className="text-sm text-[#666]">BSX-29476293</p>
+                      <p className="text-sm text-[#666]">{patientInfo.memberId}</p>
                     </div>
                   </div>
                 </div>

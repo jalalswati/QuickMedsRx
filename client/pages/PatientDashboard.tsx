@@ -4,8 +4,13 @@ import { useState } from "react";
 export default function PatientDashboard() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [chatMessages, setChatMessages] = useState<Array<{text: string, isUser: boolean}>>([
-    { text: "Hello there! I'm Medi, ready to answer any general questions you may have about your medication!", isUser: false }
+  const [chatMessages, setChatMessages] = useState<
+    Array<{ text: string; isUser: boolean }>
+  >([
+    {
+      text: "Hello there! I'm Medi, ready to answer any general questions you may have about your medication!",
+      isUser: false,
+    },
   ]);
   const [messageInput, setMessageInput] = useState("");
   const username = location.state?.username || "Jamal";
@@ -19,7 +24,13 @@ export default function PatientDashboard() {
       setChatMessages([...chatMessages, { text: messageInput, isUser: true }]);
       setMessageInput("");
       setTimeout(() => {
-        setChatMessages(prev => [...prev, { text: "Thanks for your message! How else can I help?", isUser: false }]);
+        setChatMessages((prev) => [
+          ...prev,
+          {
+            text: "Thanks for your message! How else can I help?",
+            isUser: false,
+          },
+        ]);
       }, 500);
     }
   };
@@ -124,24 +135,47 @@ export default function PatientDashboard() {
             {/* Left Section */}
             <div className="lg:col-span-3 space-y-6">
               <div>
-                <h1 className="text-4xl font-bold text-[#464255] mb-1">Dashboard</h1>
+                <h1 className="text-4xl font-bold text-[#464255] mb-1">
+                  Dashboard
+                </h1>
               </div>
 
               {/* RX Orders */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-[#464255] mb-2">RX Orders</h3>
-                <p className="text-sm text-[#000] mb-6">Two Prescription Coming Today at 3:00pm</p>
+                <h3 className="text-2xl font-bold text-[#464255] mb-2">
+                  RX Orders
+                </h3>
+                <p className="text-sm text-[#000] mb-6">
+                  Two Prescription Coming Today at 3:00pm
+                </p>
                 <div className="grid grid-cols-3 gap-6">
                   {[
-                    { label: "Incomming", value: "1", detail: "Click to View Detail" },
-                    { label: "Coming Today", value: "2", detail: "Click to View Detail" },
-                    { label: "Delivered", value: "1", detail: "Click to View Detail" },
+                    {
+                      label: "Incomming",
+                      value: "1",
+                      detail: "Click to View Detail",
+                    },
+                    {
+                      label: "Coming Today",
+                      value: "2",
+                      detail: "Click to View Detail",
+                    },
+                    {
+                      label: "Delivered",
+                      value: "1",
+                      detail: "Click to View Detail",
+                    },
                   ].map((item, index) => (
-                    <div key={index} className="flex flex-col items-center gap-4">
+                    <div
+                      key={index}
+                      className="flex flex-col items-center gap-4"
+                    >
                       <div className="w-20 h-40 rounded-full border-2 border-[#000] flex items-center justify-center text-4xl font-bold">
                         {item.value}
                       </div>
-                      <p className="text-sm font-medium text-[#000]">{item.label}</p>
+                      <p className="text-sm font-medium text-[#000]">
+                        {item.label}
+                      </p>
                       <p className="text-xs text-[#000] underline cursor-pointer hover:font-bold">
                         {item.detail}
                       </p>
@@ -152,7 +186,9 @@ export default function PatientDashboard() {
 
               {/* Make Personal Request */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-[#464255] mb-6">Make Personal Request</h3>
+                <h3 className="text-2xl font-bold text-[#464255] mb-6">
+                  Make Personal Request
+                </h3>
                 <div className="w-full bg-[#F3F2F7] rounded-3xl px-6 py-4 mb-8">
                   <input
                     type="text"
@@ -161,7 +197,9 @@ export default function PatientDashboard() {
                   />
                 </div>
 
-                <h4 className="text-3xl font-bold text-[#000] mb-6">Quick Purchase</h4>
+                <h4 className="text-3xl font-bold text-[#000] mb-6">
+                  Quick Purchase
+                </h4>
                 <div className="grid grid-cols-3 gap-6">
                   {[
                     { name: "Benadryl Allergy Relief", price: "$7.99" },
@@ -170,8 +208,12 @@ export default function PatientDashboard() {
                   ].map((product, index) => (
                     <div key={index} className="flex flex-col gap-4">
                       <div className="w-full h-32 bg-gray-300 rounded-lg"></div>
-                      <h5 className="text-sm font-bold text-[#000] underline">{product.name}</h5>
-                      <p className="text-sm font-bold text-[#000]">{product.price}</p>
+                      <h5 className="text-sm font-bold text-[#000] underline">
+                        {product.name}
+                      </h5>
+                      <p className="text-sm font-bold text-[#000]">
+                        {product.price}
+                      </p>
                       <button className="px-4 py-2 bg-[#6366F1] text-white rounded-lg font-bold text-sm hover:bg-[#5558E3] transition-colors">
                         Add to Cart
                       </button>
@@ -185,19 +227,29 @@ export default function PatientDashboard() {
             <div className="space-y-6">
               {/* Pharmacy Info */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-[#000] mb-4">Main Pharmacy of Choice</h3>
+                <h3 className="text-2xl font-bold text-[#000] mb-4">
+                  Main Pharmacy of Choice
+                </h3>
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/de35f8489c4efd7d454814d0002bd10df0facd37?width=530"
                   alt="CVS Pharmacy"
                   className="w-full h-24 object-cover rounded-lg mb-4"
                 />
-                <p className="text-sm font-bold text-[#000] mb-2">CVS 10181 Reseda Blvd</p>
+                <p className="text-sm font-bold text-[#000] mb-2">
+                  CVS 10181 Reseda Blvd
+                </p>
                 <p className="text-sm text-[#000]">(818)993-4125</p>
                 <p className="text-sm text-[#000]">Open 10 AM · Closes 12 AM</p>
                 <div className="mt-4 flex gap-4 text-sm font-bold text-[#000]">
-                  <a href="#" className="underline hover:text-[#6366F1]">Website</a>
-                  <a href="#" className="underline hover:text-[#6366F1]">Contact</a>
-                  <a href="#" className="underline hover:text-[#6366F1]">Change</a>
+                  <a href="#" className="underline hover:text-[#6366F1]">
+                    Website
+                  </a>
+                  <a href="#" className="underline hover:text-[#6366F1]">
+                    Contact
+                  </a>
+                  <a href="#" className="underline hover:text-[#6366F1]">
+                    Change
+                  </a>
                 </div>
               </div>
 

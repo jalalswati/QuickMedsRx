@@ -16,7 +16,7 @@ export default function SignUp() {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
+
     if (!selectedRole) {
       setError("Please select an account type");
       return;
@@ -38,13 +38,13 @@ export default function SignUp() {
     }
 
     setIsLoading(true);
-    
+
     // Simulate signup
     setTimeout(() => {
       setIsLoading(false);
       // Redirect to dashboard with new account
-      navigate(`/${selectedRole}-dashboard`, { 
-        state: { username: fullName, role: selectedRole, isNewUser: true } 
+      navigate(`/${selectedRole}-dashboard`, {
+        state: { username: fullName, role: selectedRole, isNewUser: true },
       });
     }, 500);
   };
@@ -55,8 +55,8 @@ export default function SignUp() {
       return;
     }
     // Simulate Google signup
-    navigate(`/${selectedRole}-dashboard`, { 
-      state: { username: "Google User", role: selectedRole, isNewUser: true } 
+    navigate(`/${selectedRole}-dashboard`, {
+      state: { username: "Google User", role: selectedRole, isNewUser: true },
     });
   };
 
@@ -84,17 +84,23 @@ export default function SignUp() {
 
           {/* Role Selection */}
           <div className="mb-6 space-y-3">
-            <p className="text-sm font-semibold text-[#464255]">Select Account Type</p>
+            <p className="text-sm font-semibold text-[#464255]">
+              Select Account Type
+            </p>
             <div className="space-y-2">
               {[
                 { value: "pharmacy", label: "Pharmacy Admin" },
                 { value: "patient", label: "Patient/Customer" },
-                { value: "driver", label: "Delivery Driver" }
+                { value: "driver", label: "Delivery Driver" },
               ].map((option) => (
-                <label key={option.value} className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 transition-all"
+                <label
+                  key={option.value}
+                  className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 transition-all"
                   style={{
-                    borderColor: selectedRole === option.value ? "#6366F1" : "#F0EDFF",
-                    backgroundColor: selectedRole === option.value ? "#F0EDFF" : "transparent"
+                    borderColor:
+                      selectedRole === option.value ? "#6366F1" : "#F0EDFF",
+                    backgroundColor:
+                      selectedRole === option.value ? "#F0EDFF" : "transparent",
                   }}
                 >
                   <input
@@ -102,10 +108,14 @@ export default function SignUp() {
                     name="role"
                     value={option.value}
                     checked={selectedRole === option.value}
-                    onChange={(e) => setSelectedRole(e.target.value as UserRole)}
+                    onChange={(e) =>
+                      setSelectedRole(e.target.value as UserRole)
+                    }
                     className="w-4 h-4 cursor-pointer"
                   />
-                  <span className="text-sm font-medium text-[#464255]">{option.label}</span>
+                  <span className="text-sm font-medium text-[#464255]">
+                    {option.label}
+                  </span>
                 </label>
               ))}
             </div>
@@ -236,7 +246,8 @@ export default function SignUp() {
             </div>
             <div className="relative bg-white px-4">
               <p className="text-base text-[#525252]">
-                Or <span className="font-bold text-[#1C1C1C]">continue</span> with
+                Or <span className="font-bold text-[#1C1C1C]">continue</span>{" "}
+                with
               </p>
             </div>
           </div>

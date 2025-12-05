@@ -29,7 +29,7 @@ export default function PharmacyOrderList() {
       amount: "12 Tablets",
       address: "123 Main St, Los Angeles, CA 90001",
       status: "Ready",
-      time: "Today at 3:00 PM"
+      time: "Today at 3:00 PM",
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ export default function PharmacyOrderList() {
       amount: "30 Tablets",
       address: "456 Oak Ave, Los Angeles, CA 90002",
       status: "Pending",
-      time: "Today at 4:30 PM"
+      time: "Today at 4:30 PM",
     },
     {
       id: 3,
@@ -47,7 +47,7 @@ export default function PharmacyOrderList() {
       amount: "60 Tablets",
       address: "789 Pine Rd, Los Angeles, CA 90003",
       status: "In Progress",
-      time: "Today at 2:00 PM"
+      time: "Today at 2:00 PM",
     },
   ];
 
@@ -59,7 +59,7 @@ export default function PharmacyOrderList() {
       amount: "90 Tablets",
       address: "321 Elm St, Los Angeles, CA 90004",
       completedDate: "December 15, 2024",
-      status: "Delivered"
+      status: "Delivered",
     },
     {
       id: 2,
@@ -68,7 +68,7 @@ export default function PharmacyOrderList() {
       amount: "30 Tablets",
       address: "654 Maple Dr, Los Angeles, CA 90005",
       completedDate: "December 14, 2024",
-      status: "Delivered"
+      status: "Delivered",
     },
     {
       id: 3,
@@ -77,7 +77,7 @@ export default function PharmacyOrderList() {
       amount: "21 Tablets",
       address: "987 Cedar Ln, Los Angeles, CA 90006",
       completedDate: "December 13, 2024",
-      status: "Delivered"
+      status: "Delivered",
     },
   ];
 
@@ -127,7 +127,9 @@ export default function PharmacyOrderList() {
                 {index === 7 && "📅"}
                 {index === 8 && "💬"}
               </span>
-              <span className={`font-${item.active ? "bold" : "medium"} text-sm`}>
+              <span
+                className={`font-${item.active ? "bold" : "medium"} text-sm`}
+              >
                 {item.label}
               </span>
             </div>
@@ -191,13 +193,19 @@ export default function PharmacyOrderList() {
         {/* Dashboard Content */}
         <div className="flex-1 overflow-auto p-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-[#464255] mb-2">Order List</h1>
-            <p className="text-[#A3A3A3]">Manage and track all patient orders</p>
+            <h1 className="text-4xl font-bold text-[#464255] mb-2">
+              Order List
+            </h1>
+            <p className="text-[#A3A3A3]">
+              Manage and track all patient orders
+            </p>
           </div>
 
           {/* Current Orders Section */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-[#464255] mb-6">Current Orders</h2>
+            <h2 className="text-2xl font-bold text-[#464255] mb-6">
+              Current Orders
+            </h2>
             <div className="space-y-4">
               {currentOrders.map((order) => (
                 <div
@@ -206,26 +214,42 @@ export default function PharmacyOrderList() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-[#000] mb-1">{order.patientName}</h3>
+                      <h3 className="text-lg font-bold text-[#000] mb-1">
+                        {order.patientName}
+                      </h3>
                       <p className="text-sm text-[#A3A3A3]">{order.time}</p>
                     </div>
-                    <div className={`px-4 py-2 rounded-lg text-sm font-bold ${getStatusColor(order.status)}`}>
+                    <div
+                      className={`px-4 py-2 rounded-lg text-sm font-bold ${getStatusColor(order.status)}`}
+                    >
                       {order.status}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-3 gap-6 mb-4">
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Medication</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.medication}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                        Medication
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.medication}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Amount</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.amount}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                        Amount
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.amount}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Address</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.address}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                        Address
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.address}
+                      </p>
                     </div>
                   </div>
 
@@ -242,7 +266,9 @@ export default function PharmacyOrderList() {
 
           {/* Order History Section */}
           <div>
-            <h2 className="text-2xl font-bold text-[#464255] mb-6">Order History</h2>
+            <h2 className="text-2xl font-bold text-[#464255] mb-6">
+              Order History
+            </h2>
             <div className="space-y-4">
               {orderHistory.map((order) => (
                 <div
@@ -251,26 +277,44 @@ export default function PharmacyOrderList() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-[#000] mb-1">{order.patientName}</h3>
-                      <p className="text-sm text-[#A3A3A3]">Completed on {order.completedDate}</p>
+                      <h3 className="text-lg font-bold text-[#000] mb-1">
+                        {order.patientName}
+                      </h3>
+                      <p className="text-sm text-[#A3A3A3]">
+                        Completed on {order.completedDate}
+                      </p>
                     </div>
-                    <div className={`px-4 py-2 rounded-lg text-sm font-bold ${getStatusColor(order.status)}`}>
+                    <div
+                      className={`px-4 py-2 rounded-lg text-sm font-bold ${getStatusColor(order.status)}`}
+                    >
                       {order.status}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-3 gap-6 mb-4">
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Medication</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.medication}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                        Medication
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.medication}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Amount</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.amount}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                        Amount
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.amount}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">Address</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.address}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-1">
+                        Address
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.address}
+                      </p>
                     </div>
                   </div>
 

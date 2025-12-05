@@ -36,9 +36,7 @@ export default function DriverDashboard() {
             <div
               key={index}
               className={`cursor-pointer transition-colors ${
-                item.active
-                  ? "text-[#00B074] font-bold"
-                  : "text-[#464255]"
+                item.active ? "text-[#00B074] font-bold" : "text-[#464255]"
               }`}
             >
               {item.label}
@@ -67,7 +65,9 @@ export default function DriverDashboard() {
         {/* Map Section */}
         <div className="bg-white rounded-3xl p-8 shadow-sm">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-[#464255]">Shift Management System</h2>
+            <h2 className="text-2xl font-bold text-[#464255]">
+              Shift Management System
+            </h2>
           </div>
           <div className="w-full h-96 bg-gradient-to-br from-[#90EE90] to-[#B0E0E6] rounded-3xl overflow-hidden border-4 border-white flex items-center justify-center">
             <img
@@ -101,9 +101,19 @@ export default function DriverDashboard() {
 
             {/* Days Grid */}
             <div className="grid grid-cols-7 gap-3">
-              {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((day, index) => (
+              {[
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+              ].map((day, index) => (
                 <div key={index} className="flex flex-col items-center gap-2">
-                  <div className="text-xs font-medium text-[#3E4954]">{day}</div>
+                  <div className="text-xs font-medium text-[#3E4954]">
+                    {day}
+                  </div>
                   <div className="w-full h-20 bg-white rounded-lg border-2 border-[#E0E0E0] flex items-center justify-center text-xs text-[#999]">
                     No shifts
                   </div>
@@ -114,15 +124,19 @@ export default function DriverDashboard() {
             {/* Thursday Highlight */}
             <div className="mt-6 bg-[#FFF9E6] p-4 rounded-lg border-l-4 border-[#F7C604]">
               <p className="text-xs font-bold text-[#3E4954]">Thursday</p>
-              <p className="text-xs text-[#3E4954]">Morning shift from 09:00 to 17:00</p>
+              <p className="text-xs text-[#3E4954]">
+                Morning shift from 09:00 to 17:00
+              </p>
             </div>
           </div>
         </div>
 
         {/* Right Panel - Payment History */}
         <div className="fixed right-8 top-8 w-96 bg-white rounded-3xl p-6 shadow-sm max-h-[calc(100vh-100px)] overflow-y-auto">
-          <h3 className="text-3xl font-bold text-[#000] mb-6">Payment History</h3>
-          
+          <h3 className="text-3xl font-bold text-[#000] mb-6">
+            Payment History
+          </h3>
+
           <div className="space-y-4">
             {[
               { date: "Friday - March 28", amount: "$112" },
@@ -134,7 +148,9 @@ export default function DriverDashboard() {
                 className="bg-[#E8E8E8] rounded-3xl p-6 hover:shadow-md transition-shadow cursor-pointer"
               >
                 <p className="font-bold text-[#000] text-lg">{payment.date}</p>
-                <p className="text-2xl font-bold text-[#000] mt-2">{payment.amount}</p>
+                <p className="text-2xl font-bold text-[#000] mt-2">
+                  {payment.amount}
+                </p>
               </div>
             ))}
           </div>

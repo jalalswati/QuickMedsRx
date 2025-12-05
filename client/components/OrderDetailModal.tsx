@@ -22,7 +22,11 @@ interface OrderDetailModalProps {
   onClose: () => void;
 }
 
-export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDetailModalProps) {
+export default function OrderDetailModal({
+  isOpen,
+  orderId,
+  onClose,
+}: OrderDetailModalProps) {
   const orderDetails: {
     [key: number]: OrderDetail;
   } = {
@@ -39,7 +43,8 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
       prescriber: "Dr. Johnson",
       insurance: "BlueCross",
       status: "Ready",
-      notes: "Tell Patient!!! - need to take 3 times a day with water. Take 30 minutes before meals."
+      notes:
+        "Tell Patient!!! - need to take 3 times a day with water. Take 30 minutes before meals.",
     },
     2: {
       patientName: "John Smith",
@@ -54,7 +59,8 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
       prescriber: "Dr. Martinez",
       insurance: "Aetna",
       status: "Pending",
-      notes: "Take with food or milk to reduce stomach upset. Do not exceed 6 tablets in 24 hours."
+      notes:
+        "Take with food or milk to reduce stomach upset. Do not exceed 6 tablets in 24 hours.",
     },
     3: {
       patientName: "Maria Garcia",
@@ -69,7 +75,7 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
       prescriber: "Dr. Williams",
       insurance: "Cigna",
       status: "In Progress",
-      notes: "Take at same time each day. Monitor blood pressure regularly."
+      notes: "Take at same time each day. Monitor blood pressure regularly.",
     },
     4: {
       patientName: "Robert Johnson",
@@ -84,7 +90,7 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
       prescriber: "Dr. Brown",
       insurance: "BlueCross",
       status: "Delivered",
-      notes: "Take with meals. May cause mild stomach upset initially."
+      notes: "Take with meals. May cause mild stomach upset initially.",
     },
     5: {
       patientName: "Jennifer Lee",
@@ -99,7 +105,7 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
       prescriber: "Dr. Davis",
       insurance: "Aetna",
       status: "Delivered",
-      notes: "Take in the evening. Maintain consistent cholesterol management."
+      notes: "Take in the evening. Maintain consistent cholesterol management.",
     },
     6: {
       patientName: "Michael Brown",
@@ -114,8 +120,8 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
       prescriber: "Dr. Garcia",
       insurance: "United",
       status: "Delivered",
-      notes: "Complete full course even if feeling better. Do not skip doses."
-    }
+      notes: "Complete full course even if feeling better. Do not skip doses.",
+    },
   };
 
   const order = orderDetails[orderId] || orderDetails[1];
@@ -151,8 +157,12 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
           {/* Header */}
           <div className="sticky top-0 bg-white border-b border-[#EBEBEB] p-8 flex items-center justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-[#000]">{order.patientName}</h2>
-              <p className="text-sm text-[#A3A3A3] mt-1">Patient prescription information</p>
+              <h2 className="text-3xl font-bold text-[#000]">
+                {order.patientName}
+              </h2>
+              <p className="text-sm text-[#A3A3A3] mt-1">
+                Patient prescription information
+              </p>
             </div>
             <button
               onClick={onClose}
@@ -170,71 +180,120 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
                 {/* Patient Information Card */}
                 <div className="bg-[#F3F2F7] rounded-2xl p-8 border-l-4 border-[#2D9CDB]">
                   <div className="flex items-start justify-between mb-6">
-                    <div className={`inline-block px-4 py-2 rounded-lg text-sm font-bold ${getStatusColor(order.status)}`}>
+                    <div
+                      className={`inline-block px-4 py-2 rounded-lg text-sm font-bold ${getStatusColor(order.status)}`}
+                    >
                       {order.status}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-6">
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Phone</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.phone}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Phone
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.phone}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Email</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.email}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Email
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.email}
+                      </p>
                     </div>
                     <div className="col-span-2">
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Address</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.address}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Address
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.address}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Medication Information Card */}
                 <div className="bg-[#F3F2F7] rounded-2xl p-8 border-l-4 border-[#00B074]">
-                  <h3 className="text-2xl font-bold text-[#000] mb-6">Medication Information</h3>
+                  <h3 className="text-2xl font-bold text-[#000] mb-6">
+                    Medication Information
+                  </h3>
 
                   <div className="grid grid-cols-2 gap-6 mb-6">
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Medication Name</p>
-                      <p className="text-lg font-bold text-[#000]">{order.medication}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Medication Name
+                      </p>
+                      <p className="text-lg font-bold text-[#000]">
+                        {order.medication}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Quantity</p>
-                      <p className="text-lg font-bold text-[#000]">{order.amount}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Quantity
+                      </p>
+                      <p className="text-lg font-bold text-[#000]">
+                        {order.amount}
+                      </p>
                     </div>
                     <div className="col-span-2">
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Dosage</p>
-                      <p className="text-sm font-bold text-[#000]">{order.dosage}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Dosage
+                      </p>
+                      <p className="text-sm font-bold text-[#000]">
+                        {order.dosage}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Refills Remaining</p>
-                      <p className="text-lg font-bold text-[#000]">{order.refills}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Refills Remaining
+                      </p>
+                      <p className="text-lg font-bold text-[#000]">
+                        {order.refills}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Start Date</p>
-                      <p className="text-sm font-bold text-[#000]">{order.startDate}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Start Date
+                      </p>
+                      <p className="text-sm font-bold text-[#000]">
+                        {order.startDate}
+                      </p>
                     </div>
                   </div>
 
                   <div className="bg-[#FFF9E6] border border-[#F7C604] rounded-lg p-4">
-                    <p className="text-sm text-[#000]"><span className="font-bold">Special Instructions:</span> {order.notes}</p>
+                    <p className="text-sm text-[#000]">
+                      <span className="font-bold">Special Instructions:</span>{" "}
+                      {order.notes}
+                    </p>
                   </div>
                 </div>
 
                 {/* Prescription Details Card */}
                 <div className="bg-[#F3F2F7] rounded-2xl p-8 border-l-4 border-[#FF5B5B]">
-                  <h3 className="text-2xl font-bold text-[#000] mb-6">Prescription Details</h3>
+                  <h3 className="text-2xl font-bold text-[#000] mb-6">
+                    Prescription Details
+                  </h3>
 
                   <div className="grid grid-cols-2 gap-6">
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Prescribing Doctor</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.prescriber}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Prescribing Doctor
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.prescriber}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">Insurance Provider</p>
-                      <p className="text-sm font-bold text-[#464255]">{order.insurance}</p>
+                      <p className="text-xs text-[#A3A3A3] font-semibold mb-2">
+                        Insurance Provider
+                      </p>
+                      <p className="text-sm font-bold text-[#464255]">
+                        {order.insurance}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -244,15 +303,21 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
               <div className="space-y-6">
                 {/* Status Summary Card */}
                 <div className="bg-[#F3F2F7] rounded-2xl p-6">
-                  <h3 className="text-xl font-bold text-[#000] mb-4">Order Status</h3>
-                  <div className={`p-6 rounded-lg text-center ${getStatusColor(order.status)}`}>
+                  <h3 className="text-xl font-bold text-[#000] mb-4">
+                    Order Status
+                  </h3>
+                  <div
+                    className={`p-6 rounded-lg text-center ${getStatusColor(order.status)}`}
+                  >
                     <p className="text-2xl font-bold">{order.status}</p>
                   </div>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="bg-[#F3F2F7] rounded-2xl p-6 space-y-4">
-                  <h3 className="text-lg font-bold text-[#000] mb-4">Actions</h3>
+                  <h3 className="text-lg font-bold text-[#000] mb-4">
+                    Actions
+                  </h3>
                   <button className="w-full px-4 py-3 bg-[#00B074] text-white rounded-lg font-bold text-sm hover:bg-[#009060] transition-colors">
                     Complete Order
                   </button>
@@ -266,11 +331,15 @@ export default function OrderDetailModal({ isOpen, orderId, onClose }: OrderDeta
 
                 {/* Quick Info Card */}
                 <div className="bg-[#F3F2F7] rounded-2xl p-6">
-                  <h3 className="text-lg font-bold text-[#000] mb-4">Quick Info</h3>
+                  <h3 className="text-lg font-bold text-[#000] mb-4">
+                    Quick Info
+                  </h3>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
                       <span className="text-[#A3A3A3]">Order ID:</span>
-                      <span className="font-bold text-[#000]">#{orderId.toString().padStart(5, "0")}</span>
+                      <span className="font-bold text-[#000]">
+                        #{orderId.toString().padStart(5, "0")}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#A3A3A3]">Date Created:</span>

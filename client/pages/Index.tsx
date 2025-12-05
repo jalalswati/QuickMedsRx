@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!selectedRole) {
       alert("Please select an account type");
       return;
@@ -24,13 +24,13 @@ export default function Login() {
     }
 
     setIsLoading(true);
-    
+
     // Simulate authentication
     setTimeout(() => {
       setIsLoading(false);
       // Route to appropriate dashboard based on role
-      navigate(`/${selectedRole}-dashboard`, { 
-        state: { username, role: selectedRole } 
+      navigate(`/${selectedRole}-dashboard`, {
+        state: { username, role: selectedRole },
       });
     }, 500);
   };
@@ -41,8 +41,8 @@ export default function Login() {
       return;
     }
     // Simulate Google auth
-    navigate(`/${selectedRole}-dashboard`, { 
-      state: { username: "Google User", role: selectedRole } 
+    navigate(`/${selectedRole}-dashboard`, {
+      state: { username: "Google User", role: selectedRole },
     });
   };
 
@@ -63,17 +63,23 @@ export default function Login() {
 
           {/* Role Selection */}
           <div className="mb-6 space-y-3">
-            <p className="text-sm font-semibold text-[#464255]">Select Account Type</p>
+            <p className="text-sm font-semibold text-[#464255]">
+              Select Account Type
+            </p>
             <div className="space-y-2">
               {[
                 { value: "pharmacy", label: "Pharmacy Admin" },
                 { value: "patient", label: "Patient/Customer" },
-                { value: "driver", label: "Delivery Driver" }
+                { value: "driver", label: "Delivery Driver" },
               ].map((option) => (
-                <label key={option.value} className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 transition-all"
+                <label
+                  key={option.value}
+                  className="flex items-center gap-3 cursor-pointer p-3 rounded-lg border-2 transition-all"
                   style={{
-                    borderColor: selectedRole === option.value ? "#6366F1" : "#F0EDFF",
-                    backgroundColor: selectedRole === option.value ? "#F0EDFF" : "transparent"
+                    borderColor:
+                      selectedRole === option.value ? "#6366F1" : "#F0EDFF",
+                    backgroundColor:
+                      selectedRole === option.value ? "#F0EDFF" : "transparent",
                   }}
                 >
                   <input
@@ -81,10 +87,14 @@ export default function Login() {
                     name="role"
                     value={option.value}
                     checked={selectedRole === option.value}
-                    onChange={(e) => setSelectedRole(e.target.value as UserRole)}
+                    onChange={(e) =>
+                      setSelectedRole(e.target.value as UserRole)
+                    }
                     className="w-4 h-4 cursor-pointer"
                   />
-                  <span className="text-sm font-medium text-[#464255]">{option.label}</span>
+                  <span className="text-sm font-medium text-[#464255]">
+                    {option.label}
+                  </span>
                 </label>
               ))}
             </div>
@@ -189,7 +199,10 @@ export default function Login() {
           <div className="text-center">
             <p className="text-sm text-[#525252]">
               Don't have an account?{" "}
-              <Link to="/sign-up" className="text-[#6366F1] font-bold hover:underline">
+              <Link
+                to="/sign-up"
+                className="text-[#6366F1] font-bold hover:underline"
+              >
                 Sign Up
               </Link>
             </p>

@@ -88,8 +88,9 @@ export default function PatientDashboard() {
           {menuItems.map((item, index) => (
             <div
               key={index}
+              onClick={() => setActiveMenu(item.label)}
               className={`px-4 py-3 rounded-lg cursor-pointer transition-colors ${
-                item.active
+                activeMenu === item.label
                   ? "bg-[#00B074] bg-opacity-10 text-[#00B074] font-bold"
                   : "text-[#464255]"
               }`}

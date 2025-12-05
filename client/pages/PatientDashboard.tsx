@@ -445,12 +445,12 @@ export default function PatientDashboard() {
                   <h2 className="text-2xl font-bold text-[#000] mb-6">Insurance Information</h2>
                   <div className="space-y-6">
                     <div>
-                      <h4 className="font-bold text-[#000] mb-2">Blue Shield PPO</h4>
-                      <p className="text-sm text-[#666]">BSX-29478293</p>
+                      <h4 className="font-bold text-[#000] mb-2">{patientInfo.insuranceProvider}</h4>
+                      <p className="text-sm text-[#666]">{patientInfo.insuranceId}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Group Number</h4>
-                      <p className="text-sm text-[#666]">G-85291</p>
+                      <p className="text-sm text-[#666]">{patientInfo.groupNumber}</p>
                     </div>
                   </div>
                 </div>

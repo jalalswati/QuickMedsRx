@@ -38,8 +38,8 @@ export default function PatientDashboard() {
       <div className="w-80 bg-white shadow-sm flex flex-col p-6">
         {/* Logo */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-[#333]">Jamal Khan</h2>
-          <p className="text-sm text-[#B9BBBD]">Valiant Patient</p>
+          <h2 className="text-2xl font-bold text-[#333]">{username}</h2>
+          <p className="text-sm text-[#B9BBBD]">Patient Dashboard</p>
         </div>
 
         {/* Menu */}

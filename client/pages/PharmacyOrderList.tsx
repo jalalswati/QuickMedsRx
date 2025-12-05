@@ -1,10 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import OrderDetailModal from "../components/OrderDetailModal";
 
 export default function PharmacyOrderList() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const username = location.state?.username || "Samantha";
 
   const handleLogout = () => {
@@ -14,7 +16,6 @@ export default function PharmacyOrderList() {
   const menuItems = [
     { label: "Dashboard", path: "/pharmacy-dashboard", active: false },
     { label: "Order List", path: "/pharmacy-order-list", active: true },
-    { label: "Order Detail", path: "/pharmacy-order-detail", active: false },
     { label: "Customer", path: "/pharmacy-customer", active: false },
     { label: "Analytics", path: "/pharmacy-analytics", active: false },
     { label: "Reviews", path: "/pharmacy-reviews", active: false },
@@ -231,7 +232,10 @@ export default function PharmacyOrderList() {
                     </div>
                   </div>
 
-                  <button className="px-4 py-2 bg-[#2D9CDB] text-white rounded-lg text-xs font-bold hover:bg-[#1E7FB5] transition-colors">
+                  <button
+                    onClick={() => setSelectedOrderId(order.id)}
+                    className="px-4 py-2 bg-[#2D9CDB] text-white rounded-lg text-xs font-bold hover:bg-[#1E7FB5] transition-colors"
+                  >
                     View Details
                   </button>
                 </div>
@@ -273,7 +277,10 @@ export default function PharmacyOrderList() {
                     </div>
                   </div>
 
-                  <button className="px-4 py-2 bg-[#00B074] text-white rounded-lg text-xs font-bold hover:bg-[#009060] transition-colors">
+                  <button
+                    onClick={() => setSelectedOrderId(order.id)}
+                    className="px-4 py-2 bg-[#00B074] text-white rounded-lg text-xs font-bold hover:bg-[#009060] transition-colors"
+                  >
                     View Details
                   </button>
                 </div>
@@ -282,6 +289,15 @@ export default function PharmacyOrderList() {
           </div>
         </div>
       </div>
+
+      {/* Order Detail Modal */}
+      {selectedOrderId && (
+        <OrderDetailModal
+          isOpen={true}
+          orderId={selectedOrderId}
+          onClose={() => setSelectedOrderId(null)}
+        />
+      )}
     </div>
   );
 }

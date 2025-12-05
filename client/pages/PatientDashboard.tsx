@@ -384,21 +384,21 @@ export default function PatientDashboard() {
                   <h2 className="text-2xl font-bold text-[#000] mb-6">Patient Details</h2>
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg font-bold text-[#000] mb-2">Jamal Swati</h3>
-                      <p className="text-sm text-[#666]">Date of Birth: 08/14/99</p>
+                      <h3 className="text-lg font-bold text-[#000] mb-2">{patientInfo.name}</h3>
+                      <p className="text-sm text-[#666]">Date of Birth: {patientInfo.dob}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Address</h4>
-                      <p className="text-sm text-[#666]">12411 Victory Blvd</p>
-                      <p className="text-sm text-[#666]">Los Angeles, CA 91606</p>
+                      <p className="text-sm text-[#666]">{patientInfo.address}</p>
+                      <p className="text-sm text-[#666]">{patientInfo.city}, {patientInfo.state} {patientInfo.zip}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Phone</h4>
-                      <p className="text-sm text-[#666]">(815) 555-1294</p>
+                      <p className="text-sm text-[#666]">{patientInfo.phone}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-[#000] mb-2">Email</h4>
-                      <p className="text-sm text-[#666]">jamal.swati@gmail.com</p>
+                      <p className="text-sm text-[#666]">{patientInfo.email}</p>
                     </div>
                   </div>
                 </div>

@@ -29,8 +29,8 @@ export default function PharmacyDashboard() {
       <div className="w-64 bg-white shadow-sm flex flex-col">
         {/* Logo */}
         <div className="p-8 border-b">
-          <h2 className="text-2xl font-bold text-[#333]">Pharmacy Co.</h2>
-          <p className="text-sm text-[#B9BBBD]">Modern Admin Dashboard</p>
+          <h2 className="text-2xl font-bold text-[#333]">{username}</h2>
+          <p className="text-sm text-[#B9BBBD]">Pharmacy Admin Dashboard</p>
         </div>
 
         {/* Menu */}

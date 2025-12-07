@@ -56,9 +56,6 @@ export default function Login() {
             <h1 className="text-[30px] font-bold leading-none uppercase mb-2 text-black">
               LOGIN
             </h1>
-            <p className="text-[#525252] text-base">
-              How to i get started lorem ipsum dolor at?
-            </p>
           </div>
 
           {/* Role Selection */}

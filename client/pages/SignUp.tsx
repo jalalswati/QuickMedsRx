@@ -24,7 +24,7 @@ export default function SignUp() {
       return;
     }
 
-    if (!fullName || !email || !password || !confirmPassword) {
+    if (!fullName || !email || !password || !confirmPassword || !phoneNumber || !address) {
       setError("Please fill in all fields");
       return;
     }

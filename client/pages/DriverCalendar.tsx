@@ -29,40 +29,35 @@ export default function DriverCalendar() {
   ];
 
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  
-  const calendarDays = [
-    { day: 1, shift: null },
-    { day: 2, shift: "Morning Shift" },
-    { day: 3, shift: null },
-    { day: 4, shift: "Night Shift" },
-    { day: 5, shift: null },
-    { day: 6, shift: null },
-    { day: 7, shift: null },
-    { day: 8, shift: null },
-    { day: 9, shift: "Evening Shift", color: "text-[#2ECC71]" },
-    { day: 10, shift: null },
-    { day: 11, shift: "Rest", color: "text-[#999]" },
-    { day: 12, shift: null },
-    { day: 13, shift: null },
-    { day: 14, shift: null },
-    { day: 15, shift: "Morning Shift" },
-    { day: 16, shift: null },
-    { day: 17, shift: null },
-    { day: 18, shift: null },
-    { day: 19, shift: null },
-    { day: 20, shift: null },
-    { day: 21, shift: null },
-    { day: 22, shift: null },
-    { day: 23, shift: null },
-    { day: 24, shift: null },
-    { day: 25, shift: "Night Shift" },
-    { day: 26, shift: null },
-    { day: 27, shift: null },
-    { day: 28, shift: null },
-    { day: 29, shift: null },
-    { day: 30, shift: null },
-    { day: 31, shift: null },
-  ];
+
+  const handleDateClick = (day: number) => {
+    setSelectedDate(day);
+    setShiftType(shifts[day] || "Morning Shift");
+    setIsModalOpen(true);
+  };
+
+  const handleAddShift = () => {
+    if (selectedDate !== null) {
+      setShifts({
+        ...shifts,
+        [selectedDate]: shiftType,
+      });
+      setIsModalOpen(false);
+      setSelectedDate(null);
+    }
+  };
+
+  const handleRemoveShift = () => {
+    if (selectedDate !== null) {
+      const newShifts = { ...shifts };
+      delete newShifts[selectedDate];
+      setShifts(newShifts);
+      setIsModalOpen(false);
+      setSelectedDate(null);
+    }
+  };
+
+  const calendarDays = Array.from({ length: 31 }, (_, i) => i + 1);
 
   return (
     <div className="min-h-screen flex bg-[#F3F2F7]">

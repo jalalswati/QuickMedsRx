@@ -229,6 +229,58 @@ export default function SignUp() {
               </div>
             </div>
 
+            {/* Phone Number Input */}
+            <div className="relative">
+              <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
+                <svg
+                  className="w-6 h-6 flex-shrink-0"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.95 21C17.87 21 15.38 20.29 13.47 18.88C11.56 17.47 9.5 15.46 8.41 13.54C7.5 11.75 7.13 10.02 7.13 8.15C7.13 7.65 7.63 7.15 8.23 7.15H10.07C10.57 7.15 11.13 7.53 11.27 8.08L12.47 12.88C12.6 13.37 12.31 14.02 11.88 14.31L10.35 15.57C10.78 16.38 11.94 18.55 14.1 20.4C15.09 21.29 16.16 22.02 17.3 22.5C17.8 22.75 18.45 22.54 18.74 22.11L20.27 19.88C20.5 19.46 21.15 19.13 21.65 19.3C22.2 19.5 23.5 20.1 23.9 20.5C24.29 20.91 24.29 21.5 23.95 21ZM13.5 2.5C17 2.5 19.75 5.25 19.75 8.75C19.75 9.5 19.15 10.1 18.4 10.1C17.65 10.1 17.05 9.5 17.05 8.75C17.05 6.75 15.5 5.2 13.5 5.2C12.75 5.2 12.15 4.6 12.15 3.85C12.15 3.1 12.75 2.5 13.5 2.5Z"
+                    fill="#1C1C1C"
+                  />
+                </svg>
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="flex-1 bg-transparent border-none outline-none text-xs text-[#1C1C1C] placeholder:text-[#1C1C1C]"
+                />
+              </div>
+            </div>
+
+            {/* Address Input */}
+            <div className="relative">
+              <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
+                <svg
+                  className="w-6 h-6 flex-shrink-0"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12C2 18.34 8.55 23.35 12 23.35C15.45 23.35 22 18.34 22 12C22 6.48 17.52 2 12 2ZM12 4C16.41 4 20 7.59 20 12C20 17.55 14.74 21.63 12 21.83C9.26 21.63 4 17.55 4 12C4 7.59 7.59 4 12 4ZM11 6V11H6V13H11V18H13V13H18V11H13V6Z"
+                    fill="#1C1C1C"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="flex-1 bg-transparent border-none outline-none text-xs text-[#1C1C1C] placeholder:text-[#1C1C1C]"
+                />
+              </div>
+            </div>
+
             {/* Sign Up Button */}
             <div className="pt-6 flex justify-center">
               <button

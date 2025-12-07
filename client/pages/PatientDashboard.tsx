@@ -745,6 +745,91 @@ export default function PatientDashboard() {
           onClose={() => setSelectedOrderId(null)}
         />
       )}
+
+      {/* Add Order Modal */}
+      {isAddingOrder && (
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsAddingOrder(false)}
+          />
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+              <div className="border-b border-[#EBEBEB] p-6 flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-[#000]">Add New Order</h2>
+                <button
+                  onClick={() => setIsAddingOrder(false)}
+                  className="text-[#A3A3A3] hover:text-[#000] text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-6 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Medication Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Omeprazole"
+                    value={newOrder.medication}
+                    onChange={(e) =>
+                      setNewOrder({ ...newOrder, medication: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#6366F1]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Amount/Quantity
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., 12 Tablets"
+                    value={newOrder.amount}
+                    onChange={(e) =>
+                      setNewOrder({ ...newOrder, amount: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#6366F1]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Prescriber (Doctor)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Dr. Johnson"
+                    value={newOrder.prescriber}
+                    onChange={(e) =>
+                      setNewOrder({ ...newOrder, prescriber: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#6366F1]"
+                  />
+                </div>
+              </div>
+
+              <div className="border-t border-[#EBEBEB] p-6 flex gap-3">
+                <button
+                  onClick={() => setIsAddingOrder(false)}
+                  className="flex-1 px-4 py-2 border border-[#D9D9D9] text-[#464255] rounded-lg font-bold hover:bg-[#F3F2F7] transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleAddOrder}
+                  className="flex-1 px-4 py-2 bg-[#6366F1] text-white rounded-lg font-bold hover:bg-[#5558E3] transition-colors"
+                >
+                  Add Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

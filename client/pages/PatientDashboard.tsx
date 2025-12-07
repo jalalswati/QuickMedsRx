@@ -756,7 +756,9 @@ export default function PatientDashboard() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
               <div className="border-b border-[#EBEBEB] p-6 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-[#000]">Add New Order</h2>
+                <h2 className="text-2xl font-bold text-[#000]">
+                  Add New Order
+                </h2>
                 <button
                   onClick={() => setIsAddingOrder(false)}
                   className="text-[#A3A3A3] hover:text-[#000] text-2xl"

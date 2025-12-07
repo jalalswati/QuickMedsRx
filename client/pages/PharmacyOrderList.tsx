@@ -691,7 +691,9 @@ export default function PharmacyOrderList() {
                                 onClick={() => handleSelectPatient(patient)}
                                 className="w-full px-4 py-3 text-left text-sm hover:bg-[#F3F2F7] transition-colors border-b border-[#EBEBEB] last:border-b-0 text-[#464255]"
                               >
-                                <div className="font-medium mb-1">{patient.name}</div>
+                                <div className="font-medium mb-1">
+                                  {patient.name}
+                                </div>
                                 <div className="text-xs text-[#A3A3A3] space-y-0.5">
                                   <div>📞 {patient.phone}</div>
                                   <div>📧 {patient.email}</div>

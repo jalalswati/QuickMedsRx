@@ -2,6 +2,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import OrderDetailModal from "../components/OrderDetailModal";
 
+interface Patient {
+  id: number;
+  name: string;
+  address: string;
+}
+
 interface Order {
   id: number;
   patientName: string;

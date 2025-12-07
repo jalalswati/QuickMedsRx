@@ -14,6 +14,24 @@ export default function PharmacyMessages() {
     navigate("/");
   };
 
+  const handleSendMessage = () => {
+    if (messageInput.trim() && selectedPatientId) {
+      const conversation = conversations.find(
+        (c) => c.patientId === selectedPatientId
+      );
+      if (conversation) {
+        addMessage(
+          selectedPatientId,
+          conversation.patientName,
+          "pharmacy",
+          username,
+          messageInput
+        );
+        setMessageInput("");
+      }
+    }
+  };
+
   const menuItems = [
     {
       icon: "🏠",

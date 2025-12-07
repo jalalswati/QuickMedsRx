@@ -136,6 +136,35 @@ export default function PharmacyOrderList() {
     setStatusDropdownId(null);
   };
 
+  const handleAddOrder = () => {
+    if (
+      newOrderForm.patientName.trim() &&
+      newOrderForm.medication.trim() &&
+      newOrderForm.amount.trim() &&
+      newOrderForm.address.trim()
+    ) {
+      const newOrder: Order = {
+        id: Math.max(...currentOrders.map((o) => o.id), 0) + 1,
+        patientName: newOrderForm.patientName,
+        medication: newOrderForm.medication,
+        amount: newOrderForm.amount,
+        address: newOrderForm.address,
+        status: "Pending",
+        time: newOrderForm.time || "Today",
+      };
+
+      setCurrentOrders([newOrder, ...currentOrders]);
+      setNewOrderForm({
+        patientName: "",
+        medication: "",
+        amount: "",
+        address: "",
+        time: "",
+      });
+      setIsAddingOrder(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex bg-[#F3F2F7]">
       {/* Sidebar */}

@@ -235,7 +235,7 @@ export default function SignUp() {
             <div className="relative">
               <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F61bddd9372a64bd4a4d133d4618c75fe%2Fc01527227cc54486877bdbfaa21735dc?format=webp&width=800"
+                  src="https://cdn.builder.io/api/v1/image/assets%2F61bddd9372a64bd4a4d133d4618c75fe%2F05d7ca77bc9a4f24abbb173c986bf3fa?format=webp&width=800"
                   alt="Phone"
                   className="w-6 h-6 flex-shrink-0 object-contain"
                 />

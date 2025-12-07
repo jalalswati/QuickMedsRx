@@ -135,6 +135,52 @@ export default function PharmacyOrderList() {
     },
   ]);
 
+  const handlePatientSearch = (query: string) => {
+    setPatientSearchQuery(query);
+    setShowPatientSuggestions(true);
+  };
+
+  const getFilteredPatients = () => {
+    if (!patientSearchQuery.trim()) {
+      return dummyPatients;
+    }
+    return dummyPatients.filter((patient) =>
+      patient.name.toLowerCase().includes(patientSearchQuery.toLowerCase()),
+    );
+  };
+
+  const handleSelectPatient = (patient: Patient) => {
+    setSelectedPatient(patient);
+    setPatientSearchQuery(patient.name);
+    setNewOrderForm({
+      ...newOrderForm,
+      patientName: patient.name,
+      address: patient.address,
+    });
+    setShowPatientSuggestions(false);
+  };
+
+  const handleAddNewPatient = () => {
+    if (newPatientForm.name.trim() && newPatientForm.address.trim()) {
+      const newPatient: Patient = {
+        id: Math.max(...dummyPatients.map((p) => p.id), 0) + 1,
+        name: newPatientForm.name,
+        address: newPatientForm.address,
+      };
+      setDummyPatients([...dummyPatients, newPatient]);
+      setSelectedPatient(newPatient);
+      setPatientSearchQuery(newPatient.name);
+      setNewOrderForm({
+        ...newOrderForm,
+        patientName: newPatient.name,
+        address: newPatient.address,
+      });
+      setIsAddingNewPatient(false);
+      setNewPatientForm({ name: "", address: "" });
+      setShowPatientSuggestions(false);
+    }
+  };
+
   const handleLogout = () => {
     navigate("/");
   };

@@ -257,7 +257,7 @@ export default function SignUp() {
               </div>
             </div>
 
-            {/* Address Input */}
+            {/* Street Input */}
             <div className="relative">
               <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
                 <svg
@@ -275,11 +275,66 @@ export default function SignUp() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Street Address"
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
                   className="flex-1 bg-transparent border-none outline-none text-xs text-[#1C1C1C] placeholder:text-[#1C1C1C]"
                 />
+              </div>
+            </div>
+
+            {/* Postal Code & City Row */}
+            <div className="grid grid-cols-2 gap-3">
+              {/* Postal Code Input */}
+              <div className="relative">
+                <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
+                  <svg
+                    className="w-6 h-6 flex-shrink-0"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12C2 18.34 8.55 23.35 12 23.35C15.45 23.35 22 18.34 22 12C22 6.48 17.52 2 12 2ZM12 4C16.41 4 20 7.59 20 12C20 17.55 14.74 21.63 12 21.83C9.26 21.63 4 17.55 4 12C4 7.59 7.59 4 12 4ZM11 6V11H6V13H11V18H13V13H18V11H13V6Z"
+                      fill="#1C1C1C"
+                    />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Postal Code"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    className="flex-1 bg-transparent border-none outline-none text-xs text-[#1C1C1C] placeholder:text-[#1C1C1C]"
+                  />
+                </div>
+              </div>
+
+              {/* City Input */}
+              <div className="relative">
+                <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
+                  <svg
+                    className="w-6 h-6 flex-shrink-0"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12C2 18.34 8.55 23.35 12 23.35C15.45 23.35 22 18.34 22 12C22 6.48 17.52 2 12 2ZM12 4C16.41 4 20 7.59 20 12C20 17.55 14.74 21.63 12 21.83C9.26 21.63 4 17.55 4 12C4 7.59 7.59 4 12 4ZM11 6V11H6V13H11V18H13V13H18V11H13V6Z"
+                      fill="#1C1C1C"
+                    />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="City"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="flex-1 bg-transparent border-none outline-none text-xs text-[#1C1C1C] placeholder:text-[#1C1C1C]"
+                  />
+                </div>
               </div>
             </div>
 

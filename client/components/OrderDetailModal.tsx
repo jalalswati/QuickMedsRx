@@ -174,7 +174,7 @@ export default function OrderDetailModal({
                         Phone
                       </p>
                       <p className="text-sm font-bold text-[#464255]">
-                        {order.phone}
+                        {extraDetails.phone}
                       </p>
                     </div>
                     <div>
@@ -182,7 +182,7 @@ export default function OrderDetailModal({
                         Email
                       </p>
                       <p className="text-sm font-bold text-[#464255]">
-                        {order.email}
+                        {extraDetails.email}
                       </p>
                     </div>
                     <div className="col-span-2">
@@ -224,7 +224,7 @@ export default function OrderDetailModal({
                         Dosage
                       </p>
                       <p className="text-sm font-bold text-[#000]">
-                        {order.dosage}
+                        {extraDetails.dosage}
                       </p>
                     </div>
                     <div>
@@ -232,7 +232,7 @@ export default function OrderDetailModal({
                         Refills Remaining
                       </p>
                       <p className="text-lg font-bold text-[#000]">
-                        {order.refills}
+                        {extraDetails.refills}
                       </p>
                     </div>
                     <div>
@@ -240,7 +240,7 @@ export default function OrderDetailModal({
                         Start Date
                       </p>
                       <p className="text-sm font-bold text-[#000]">
-                        {order.startDate}
+                        {extraDetails.startDate}
                       </p>
                     </div>
                   </div>
@@ -248,7 +248,7 @@ export default function OrderDetailModal({
                   <div className="bg-[#FFF9E6] border border-[#F7C604] rounded-lg p-4">
                     <p className="text-sm text-[#000]">
                       <span className="font-bold">Special Instructions:</span>{" "}
-                      {order.notes}
+                      {extraDetails.notes}
                     </p>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ export default function OrderDetailModal({
                         Prescribing Doctor
                       </p>
                       <p className="text-sm font-bold text-[#464255]">
-                        {order.prescriber}
+                        {extraDetails.prescriber}
                       </p>
                     </div>
                     <div>
@@ -273,7 +273,7 @@ export default function OrderDetailModal({
                         Insurance Provider
                       </p>
                       <p className="text-sm font-bold text-[#464255]">
-                        {order.insurance}
+                        {extraDetails.insurance}
                       </p>
                     </div>
                   </div>
@@ -319,7 +319,7 @@ export default function OrderDetailModal({
                     <div className="flex justify-between">
                       <span className="text-[#A3A3A3]">Order ID:</span>
                       <span className="font-bold text-[#000]">
-                        #{orderId.toString().padStart(5, "0")}
+                        #{order.id.toString().padStart(5, "0")}
                       </span>
                     </div>
                     <div className="flex justify-between">

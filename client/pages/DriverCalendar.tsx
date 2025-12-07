@@ -1,9 +1,20 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function DriverCalendar() {
   const location = useLocation();
   const navigate = useNavigate();
   const username = location.state?.username || "Jamal Khan";
+  const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [shiftType, setShiftType] = useState("Morning Shift");
+  const [shifts, setShifts] = useState<{ [key: number]: string }>({
+    2: "Morning Shift",
+    4: "Night Shift",
+    9: "Evening Shift",
+    15: "Morning Shift",
+    25: "Night Shift",
+  });
 
   const handleLogout = () => {
     navigate("/");

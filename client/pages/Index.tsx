@@ -102,7 +102,7 @@ export default function Login() {
 
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-[18px]">
-            {/* Username Input */}
+            {/* Email Input */}
             <div className="relative">
               <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
                 <svg
@@ -120,7 +120,7 @@ export default function Login() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Username"
+                  placeholder="Email"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className="flex-1 bg-transparent border-none outline-none text-xs text-[#1C1C1C] placeholder:text-[#1C1C1C]"

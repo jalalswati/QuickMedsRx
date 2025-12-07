@@ -272,9 +272,17 @@ export default function PharmacyOrderList() {
 
           {/* Current Orders Section */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-[#464255] mb-6">
-              Current Orders
-            </h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-[#464255]">
+                Current Orders
+              </h2>
+              <button
+                onClick={() => setIsAddingOrder(true)}
+                className="px-6 py-2 bg-[#2D9CDB] text-white rounded-lg font-bold text-sm hover:bg-[#1E7FB5] transition-colors"
+              >
+                + Add Order
+              </button>
+            </div>
             <div className="space-y-4">
               {currentOrders.map((order) => (
                 <div

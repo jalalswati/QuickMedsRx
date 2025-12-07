@@ -8,6 +8,8 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
   const [selectedRole, setSelectedRole] = useState<UserRole>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");

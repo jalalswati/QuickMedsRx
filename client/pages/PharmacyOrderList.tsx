@@ -5,7 +5,11 @@ import OrderDetailModal from "../components/OrderDetailModal";
 interface Patient {
   id: number;
   name: string;
+  phone: string;
+  email: string;
   address: string;
+  prescribingDoctor: string;
+  insuranceProvider: string;
 }
 
 interface Order {
@@ -31,7 +35,11 @@ export default function PharmacyOrderList() {
   const [isAddingNewPatient, setIsAddingNewPatient] = useState(false);
   const [newPatientForm, setNewPatientForm] = useState({
     name: "",
+    phone: "",
+    email: "",
     address: "",
+    prescribingDoctor: "",
+    insuranceProvider: "",
   });
   const [newOrderForm, setNewOrderForm] = useState({
     patientName: "",
@@ -46,32 +54,56 @@ export default function PharmacyOrderList() {
     {
       id: 1,
       name: "Samantha Sanchez",
+      phone: "(555) 123-4567",
+      email: "samantha@email.com",
       address: "123 Main St, Los Angeles, CA 90001",
+      prescribingDoctor: "Dr. Johnson",
+      insuranceProvider: "BlueCross",
     },
     {
       id: 2,
       name: "John Smith",
+      phone: "(555) 234-5678",
+      email: "john.smith@email.com",
       address: "456 Oak Ave, Los Angeles, CA 90002",
+      prescribingDoctor: "Dr. Wilson",
+      insuranceProvider: "Aetna",
     },
     {
       id: 3,
       name: "Maria Garcia",
+      phone: "(555) 345-6789",
+      email: "maria.garcia@email.com",
       address: "789 Pine Rd, Los Angeles, CA 90003",
+      prescribingDoctor: "Dr. Martinez",
+      insuranceProvider: "UnitedHealth",
     },
     {
       id: 4,
       name: "Robert Johnson",
+      phone: "(555) 456-7890",
+      email: "robert.johnson@email.com",
       address: "321 Elm St, Los Angeles, CA 90004",
+      prescribingDoctor: "Dr. Brown",
+      insuranceProvider: "Cigna",
     },
     {
       id: 5,
       name: "Jennifer Lee",
+      phone: "(555) 567-8901",
+      email: "jennifer.lee@email.com",
       address: "654 Maple Dr, Los Angeles, CA 90005",
+      prescribingDoctor: "Dr. Kim",
+      insuranceProvider: "Humana",
     },
     {
       id: 6,
       name: "Michael Brown",
+      phone: "(555) 678-9012",
+      email: "michael.brown@email.com",
       address: "987 Cedar Ln, Los Angeles, CA 90006",
+      prescribingDoctor: "Dr. Anderson",
+      insuranceProvider: "BlueCross",
     },
   ]);
 

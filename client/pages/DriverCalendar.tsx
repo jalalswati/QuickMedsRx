@@ -116,15 +116,16 @@ export default function DriverCalendar() {
 
           {/* Calendar Grid */}
           <div className="grid grid-cols-7 gap-3">
-            {calendarDays.map((item, index) => (
+            {calendarDays.map((day) => (
               <div
-                key={index}
-                className="border border-[#E0E0E0] rounded-lg p-3 min-h-24 hover:shadow-sm transition-shadow"
+                key={day}
+                onClick={() => handleDateClick(day)}
+                className="border border-[#E0E0E0] rounded-lg p-3 min-h-24 hover:shadow-md hover:border-[#00B074] transition-all cursor-pointer"
               >
-                <p className="text-sm font-medium text-[#555] mb-2">{item.day}</p>
-                {item.shift && (
-                  <p className={`text-xs font-medium ${item.color || "text-[#000]"}`}>
-                    {item.shift}
+                <p className="text-sm font-medium text-[#555] mb-2">{day}</p>
+                {shifts[day] && (
+                  <p className="text-xs font-medium text-[#00B074]">
+                    {shifts[day]}
                   </p>
                 )}
               </div>

@@ -193,11 +193,22 @@ export default function PharmacyOrderList() {
   };
 
   const handleAddNewPatient = () => {
-    if (newPatientForm.name.trim() && newPatientForm.address.trim()) {
+    if (
+      newPatientForm.name.trim() &&
+      newPatientForm.phone.trim() &&
+      newPatientForm.email.trim() &&
+      newPatientForm.address.trim() &&
+      newPatientForm.prescribingDoctor.trim() &&
+      newPatientForm.insuranceProvider.trim()
+    ) {
       const newPatient: Patient = {
         id: Math.max(...dummyPatients.map((p) => p.id), 0) + 1,
         name: newPatientForm.name,
+        phone: newPatientForm.phone,
+        email: newPatientForm.email,
         address: newPatientForm.address,
+        prescribingDoctor: newPatientForm.prescribingDoctor,
+        insuranceProvider: newPatientForm.insuranceProvider,
       };
       setDummyPatients([...dummyPatients, newPatient]);
       setSelectedPatient(newPatient);
@@ -208,7 +219,14 @@ export default function PharmacyOrderList() {
         address: newPatient.address,
       });
       setIsAddingNewPatient(false);
-      setNewPatientForm({ name: "", address: "" });
+      setNewPatientForm({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        prescribingDoctor: "",
+        insuranceProvider: "",
+      });
       setShowPatientSuggestions(false);
     }
   };

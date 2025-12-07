@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import PatientOrderDetailModal from "../components/PatientOrderDetailModal";
 import PersonalInfoModal from "../components/PersonalInfoModal";
+import { useMessaging } from "../contexts/MessagingContext";
 
 export default function PatientDashboard() {
   const location = useLocation();

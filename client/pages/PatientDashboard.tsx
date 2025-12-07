@@ -69,7 +69,7 @@ export default function PatientDashboard() {
         patientInfo.name,
         "patient",
         patientInfo.name,
-        pharmacyMessageInput
+        pharmacyMessageInput,
       );
       setPharmacyMessageInput("");
     }
@@ -611,7 +611,8 @@ export default function PatientDashboard() {
                           <div className="text-center">
                             <div className="text-6xl mb-4">💬</div>
                             <p className="text-[#A3A3A3]">
-                              No messages yet. Start a conversation with the pharmacy!
+                              No messages yet. Start a conversation with the
+                              pharmacy!
                             </p>
                           </div>
                         </div>

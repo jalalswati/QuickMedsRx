@@ -30,23 +30,32 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/pharmacy-dashboard" element={<PharmacyDashboard />} />
-          <Route path="/pharmacy-order-list" element={<PharmacyOrderList />} />
-          <Route path="/pharmacy-analytics" element={<PharmacyAnalytics />} />
-          <Route path="/pharmacy-messages" element={<PharmacyMessages />} />
-          <Route path="/pharmacy-calendar" element={<PharmacyCalendar />} />
-          <Route path="/patient-dashboard" element={<PatientDashboard />} />
-          <Route path="/driver-dashboard" element={<DriverDashboard />} />
-          <Route path="/driver-messages" element={<DriverMessages />} />
-          <Route path="/driver-payment-history" element={<DriverPaymentHistory />} />
-          <Route path="/driver-personal-info" element={<DriverPersonalInfo />} />
-          <Route path="/driver-calendar" element={<DriverCalendar />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/pharmacy-dashboard" element={<PharmacyDashboard />} />
+            <Route
+              path="/pharmacy-order-list"
+              element={<PharmacyOrderList />}
+            />
+            <Route path="/pharmacy-analytics" element={<PharmacyAnalytics />} />
+            <Route path="/pharmacy-messages" element={<PharmacyMessages />} />
+            <Route path="/pharmacy-calendar" element={<PharmacyCalendar />} />
+            <Route path="/patient-dashboard" element={<PatientDashboard />} />
+            <Route path="/driver-dashboard" element={<DriverDashboard />} />
+            <Route path="/driver-messages" element={<DriverMessages />} />
+            <Route
+              path="/driver-payment-history"
+              element={<DriverPaymentHistory />}
+            />
+            <Route
+              path="/driver-personal-info"
+              element={<DriverPersonalInfo />}
+            />
+            <Route path="/driver-calendar" element={<DriverCalendar />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </MessagingProvider>

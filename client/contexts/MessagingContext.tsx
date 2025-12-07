@@ -21,13 +21,13 @@ interface MessagingContextType {
     patientName: string,
     sender: "patient" | "pharmacy",
     senderName: string,
-    content: string
+    content: string,
   ) => void;
   getConversation: (patientId: string) => Conversation | undefined;
 }
 
 const MessagingContext = createContext<MessagingContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function MessagingProvider({ children }: { children: React.ReactNode }) {
@@ -38,7 +38,7 @@ export function MessagingProvider({ children }: { children: React.ReactNode }) {
     patientName: string,
     sender: "patient" | "pharmacy",
     senderName: string,
-    content: string
+    content: string,
   ) => {
     setConversations((prev) => {
       const existingConversation = prev.find((c) => c.patientId === patientId);
@@ -59,7 +59,7 @@ export function MessagingProvider({ children }: { children: React.ReactNode }) {
                   },
                 ],
               }
-            : c
+            : c,
         );
       } else {
         return [
@@ -87,7 +87,9 @@ export function MessagingProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <MessagingContext.Provider value={{ conversations, addMessage, getConversation }}>
+    <MessagingContext.Provider
+      value={{ conversations, addMessage, getConversation }}
+    >
       {children}
     </MessagingContext.Provider>
   );

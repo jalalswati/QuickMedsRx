@@ -6,7 +6,9 @@ export default function PharmacyMessages() {
   const location = useLocation();
   const navigate = useNavigate();
   const { conversations, addMessage } = useMessaging();
-  const [selectedPatientId, setSelectedPatientId] = useState<string | null>(null);
+  const [selectedPatientId, setSelectedPatientId] = useState<string | null>(
+    null,
+  );
   const [messageInput, setMessageInput] = useState("");
   const username = location.state?.username || "Samantha";
 
@@ -17,7 +19,7 @@ export default function PharmacyMessages() {
   const handleSendMessage = () => {
     if (messageInput.trim() && selectedPatientId) {
       const conversation = conversations.find(
-        (c) => c.patientId === selectedPatientId
+        (c) => c.patientId === selectedPatientId,
       );
       if (conversation) {
         addMessage(
@@ -25,7 +27,7 @@ export default function PharmacyMessages() {
           conversation.patientName,
           "pharmacy",
           username,
-          messageInput
+          messageInput,
         );
         setMessageInput("");
       }
@@ -169,7 +171,9 @@ export default function PharmacyMessages() {
                     {conversations.map((conversation) => (
                       <div
                         key={conversation.patientId}
-                        onClick={() => setSelectedPatientId(conversation.patientId)}
+                        onClick={() =>
+                          setSelectedPatientId(conversation.patientId)
+                        }
                         className={`p-4 rounded-lg cursor-pointer transition-colors ${
                           selectedPatientId === conversation.patientId
                             ? "bg-[#00B074] bg-opacity-10 border-l-4 border-[#00B074]"
@@ -180,7 +184,11 @@ export default function PharmacyMessages() {
                           {conversation.patientName}
                         </p>
                         <p className="text-xs text-[#A3A3A3] truncate">
-                          {conversation.messages[conversation.messages.length - 1]?.content}
+                          {
+                            conversation.messages[
+                              conversation.messages.length - 1
+                            ]?.content
+                          }
                         </p>
                       </div>
                     ))}
@@ -194,7 +202,7 @@ export default function PharmacyMessages() {
               {selectedPatientId ? (
                 (() => {
                   const conversation = conversations.find(
-                    (c) => c.patientId === selectedPatientId
+                    (c) => c.patientId === selectedPatientId,
                   );
                   if (!conversation) return null;
 

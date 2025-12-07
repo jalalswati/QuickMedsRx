@@ -18,6 +18,14 @@ export default function PharmacyOrderList() {
   const navigate = useNavigate();
   const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const [statusDropdownId, setStatusDropdownId] = useState<number | null>(null);
+  const [isAddingOrder, setIsAddingOrder] = useState(false);
+  const [newOrderForm, setNewOrderForm] = useState({
+    patientName: "",
+    medication: "",
+    amount: "",
+    address: "",
+    time: "",
+  });
   const username = location.state?.username || "Samantha";
 
   const [currentOrders, setCurrentOrders] = useState<Order[]>([

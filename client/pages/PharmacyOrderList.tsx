@@ -368,12 +368,20 @@ export default function PharmacyOrderList() {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => setSelectedOrderId(order.id)}
-                    className="px-4 py-2 bg-[#2D9CDB] text-white rounded-lg text-xs font-bold hover:bg-[#1E7FB5] transition-colors"
-                  >
-                    View Details
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setSelectedOrderId(order.id)}
+                      className="flex-1 px-4 py-2 bg-[#2D9CDB] text-white rounded-lg text-xs font-bold hover:bg-[#1E7FB5] transition-colors"
+                    >
+                      View Details
+                    </button>
+                    <button
+                      onClick={() => handleDeleteOrder(order.id, true)}
+                      className="px-4 py-2 border border-[#FF5B5B] text-[#FF5B5B] rounded-lg text-xs font-bold hover:bg-[#FF5B5B] hover:text-white transition-colors"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

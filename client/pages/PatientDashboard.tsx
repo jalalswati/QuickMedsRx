@@ -81,6 +81,34 @@ export default function PatientDashboard() {
     }
   };
 
+  const handleAddOrder = () => {
+    if (
+      newOrder.medication.trim() &&
+      newOrder.amount.trim() &&
+      newOrder.prescriber.trim()
+    ) {
+      const today = new Date();
+      const orderDate = today.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      const order = {
+        id: Math.max(...patientOrders.map((o) => o.id), 0) + 1,
+        medication: newOrder.medication,
+        amount: newOrder.amount,
+        prescriber: newOrder.prescriber,
+        status: "Processing",
+        orderDate: orderDate,
+      };
+
+      setPatientOrders([order, ...patientOrders]);
+      setNewOrder({ medication: "", amount: "", prescriber: "" });
+      setIsAddingOrder(false);
+    }
+  };
+
   const menuItems = [
     { label: "Dashboard" },
     { label: "Order History" },

@@ -254,6 +254,8 @@ export default function PharmacyOrderList() {
         address: "",
         time: "",
       });
+      setPatientSearchQuery("");
+      setSelectedPatient(null);
       setIsAddingOrder(false);
     }
   };

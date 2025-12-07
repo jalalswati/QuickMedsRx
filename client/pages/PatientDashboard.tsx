@@ -89,7 +89,7 @@ export default function PatientDashboard() {
     { label: "Message" },
   ];
 
-  const patientOrders = [
+  const [patientOrders, setPatientOrders] = useState([
     {
       id: 1,
       medication: "Omeprazole",
@@ -114,7 +114,7 @@ export default function PatientDashboard() {
       status: "In Transit",
       orderDate: "December 15, 2024",
     },
-  ];
+  ]);
 
   const getStatusColor = (status: string) => {
     switch (status) {

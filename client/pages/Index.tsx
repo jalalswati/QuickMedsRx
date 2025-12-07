@@ -222,7 +222,7 @@ export default function Login() {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F61bddd9372a64bd4a4d133d4618c75fe%2Fc3e555cf12344c63a3507952abd32e41?format=webp&width=800"
               alt="QuickMedsRx Logo"
-              className="w-96 h-auto object-contain"
+              className="w-96 h-auto object-contain scale-125"
             />
           </div>
         </div>

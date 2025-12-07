@@ -134,6 +134,83 @@ export default function DriverCalendar() {
         </div>
       </div>
 
+      {/* Add Shift Modal */}
+      {isModalOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsModalOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+              {/* Header */}
+              <div className="border-b border-[#EBEBEB] p-6 flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-[#000]">
+                  {shifts[selectedDate!] ? "Edit Shift" : "Add Shift"}
+                </h2>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-[#A3A3A3] hover:text-[#000] text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 space-y-6">
+                <div>
+                  <p className="text-lg font-bold text-[#000] mb-4">
+                    March {selectedDate}, 2025
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-3">
+                    Shift Type
+                  </label>
+                  <select
+                    value={shiftType}
+                    onChange={(e) => setShiftType(e.target.value)}
+                    className="w-full px-4 py-3 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#00B074]"
+                  >
+                    <option value="Morning Shift">Morning Shift</option>
+                    <option value="Evening Shift">Evening Shift</option>
+                    <option value="Night Shift">Night Shift</option>
+                    <option value="Rest">Rest Day</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="border-t border-[#EBEBEB] p-6 flex gap-3">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 px-4 py-3 border border-[#D9D9D9] text-[#464255] rounded-lg font-bold hover:bg-[#F3F2F7] transition-colors"
+                >
+                  Cancel
+                </button>
+                {shifts[selectedDate!] && (
+                  <button
+                    onClick={handleRemoveShift}
+                    className="flex-1 px-4 py-3 border border-[#FF5B5B] text-[#FF5B5B] rounded-lg font-bold hover:bg-[#FF5B5B] hover:text-white transition-colors"
+                  >
+                    Remove
+                  </button>
+                )}
+                <button
+                  onClick={handleAddShift}
+                  className="flex-1 px-4 py-3 bg-[#00B074] text-white rounded-lg font-bold hover:bg-[#009060] transition-colors"
+                >
+                  {shifts[selectedDate!] ? "Update" : "Add"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

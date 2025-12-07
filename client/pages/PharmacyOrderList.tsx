@@ -165,6 +165,14 @@ export default function PharmacyOrderList() {
     }
   };
 
+  const handleDeleteOrder = (orderId: number, isCurrent: boolean) => {
+    if (isCurrent) {
+      setCurrentOrders(currentOrders.filter((order) => order.id !== orderId));
+    } else {
+      setOrderHistory(orderHistory.filter((order) => order.id !== orderId));
+    }
+  };
+
   return (
     <div className="min-h-screen flex bg-[#F3F2F7]">
       {/* Sidebar */}

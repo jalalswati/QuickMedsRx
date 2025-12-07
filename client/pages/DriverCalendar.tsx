@@ -22,13 +22,25 @@ export default function DriverCalendar() {
 
   const menuItems = [
     { label: "Dashboard", path: "/driver-dashboard", active: false },
-    { label: "Payment History", path: "/driver-payment-history", active: false },
+    {
+      label: "Payment History",
+      path: "/driver-payment-history",
+      active: false,
+    },
     { label: "Personal Info", path: "/driver-personal-info", active: false },
     { label: "Calendar", path: "/driver-calendar", active: true },
     { label: "Message", path: "/driver-messages", active: false },
   ];
 
-  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   const handleDateClick = (day: number) => {
     setSelectedDate(day);
@@ -108,7 +120,10 @@ export default function DriverCalendar() {
           {/* Days of Week Header */}
           <div className="grid grid-cols-7 gap-4 mb-4">
             {daysOfWeek.map((day) => (
-              <div key={day} className="text-center text-base font-medium text-[#777] opacity-50">
+              <div
+                key={day}
+                className="text-center text-base font-medium text-[#777] opacity-50"
+              >
                 {day}
               </div>
             ))}

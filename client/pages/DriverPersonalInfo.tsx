@@ -11,7 +11,11 @@ export default function DriverPersonalInfo() {
 
   const menuItems = [
     { label: "Dashboard", path: "/driver-dashboard", active: false },
-    { label: "Payment History", path: "/driver-payment-history", active: false },
+    {
+      label: "Payment History",
+      path: "/driver-payment-history",
+      active: false,
+    },
     { label: "Personal Info", path: "/driver-personal-info", active: true },
     { label: "Calendar", path: "/driver-calendar", active: false },
     { label: "Message", path: "/driver-messages", active: false },
@@ -58,7 +62,9 @@ export default function DriverPersonalInfo() {
       <div className="flex-1 p-8 flex items-center justify-center">
         <div className="w-full max-w-2xl">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-[#464255]">Personal Information</h1>
+            <h1 className="text-4xl font-bold text-[#464255]">
+              Personal Information
+            </h1>
           </div>
 
           <div className="bg-white rounded-2xl p-10 shadow-sm">
@@ -71,7 +77,9 @@ export default function DriverPersonalInfo() {
             {/* Form Fields */}
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-[#000] mb-2">Full Name</label>
+                <label className="block text-sm font-medium text-[#000] mb-2">
+                  Full Name
+                </label>
                 <input
                   type="text"
                   className="w-full px-4 py-2 border border-[#D9D9D9] rounded focus:outline-none focus:border-[#00B074]"
@@ -79,7 +87,9 @@ export default function DriverPersonalInfo() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#000] mb-2">Email Address</label>
+                <label className="block text-sm font-medium text-[#000] mb-2">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   className="w-full px-4 py-2 border border-[#D9D9D9] rounded focus:outline-none focus:border-[#00B074]"
@@ -87,7 +97,9 @@ export default function DriverPersonalInfo() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#000] mb-2">Phone Number</label>
+                <label className="block text-sm font-medium text-[#000] mb-2">
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   className="w-full px-4 py-2 border border-[#D9D9D9] rounded focus:outline-none focus:border-[#00B074]"
@@ -95,7 +107,9 @@ export default function DriverPersonalInfo() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#000] mb-2">Driver License Number</label>
+                <label className="block text-sm font-medium text-[#000] mb-2">
+                  Driver License Number
+                </label>
                 <input
                   type="text"
                   className="w-full px-4 py-2 border border-[#D9D9D9] rounded focus:outline-none focus:border-[#00B074]"
@@ -103,7 +117,9 @@ export default function DriverPersonalInfo() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#000] mb-2">Home Address</label>
+                <label className="block text-sm font-medium text-[#000] mb-2">
+                  Home Address
+                </label>
                 <input
                   type="text"
                   className="w-full px-4 py-2 border border-[#D9D9D9] rounded focus:outline-none focus:border-[#00B074]"
@@ -111,7 +127,9 @@ export default function DriverPersonalInfo() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#000] mb-2">Vehicle Type</label>
+                <label className="block text-sm font-medium text-[#000] mb-2">
+                  Vehicle Type
+                </label>
                 <input
                   type="text"
                   className="w-full px-4 py-2 border border-[#D9D9D9] rounded focus:outline-none focus:border-[#00B074]"
@@ -125,7 +143,6 @@ export default function DriverPersonalInfo() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

@@ -11,7 +11,11 @@ export default function DriverDashboard() {
 
   const menuItems = [
     { label: "Dashboard", path: "/driver-dashboard", active: true },
-    { label: "Payment History", path: "/driver-payment-history", active: false },
+    {
+      label: "Payment History",
+      path: "/driver-payment-history",
+      active: false,
+    },
     { label: "Personal Info", path: "/driver-personal-info", active: false },
     { label: "Calendar", path: "/driver-calendar", active: false },
     { label: "Message", path: "/driver-messages", active: false },
@@ -81,7 +85,9 @@ export default function DriverDashboard() {
 
         {/* Schedule Section */}
         <div className="bg-white rounded-3xl p-8 shadow-sm">
-          <h2 className="text-3xl font-bold text-[#000] mb-6">Shift Management System</h2>
+          <h2 className="text-3xl font-bold text-[#000] mb-6">
+            Shift Management System
+          </h2>
           <div className="bg-[#F8F8F8] rounded-2xl p-6">
             <img
               src="https://api.builder.io/api/v1/image/assets/TEMP/3e34a26b81275db64f478571004acad72b291438?width=2034"
@@ -106,8 +112,12 @@ export default function DriverDashboard() {
               key={index}
               className="bg-[#E8E8E8] rounded-3xl p-8 hover:shadow-md transition-shadow cursor-pointer"
             >
-              <p className="font-bold text-[#000] text-2xl mb-2">{payment.date}</p>
-              <p className="text-4xl font-bold text-[#000] mt-4">{payment.amount}</p>
+              <p className="font-bold text-[#000] text-2xl mb-2">
+                {payment.date}
+              </p>
+              <p className="text-4xl font-bold text-[#000] mt-4">
+                {payment.amount}
+              </p>
             </div>
           ))}
         </div>

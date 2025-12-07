@@ -26,7 +26,7 @@ interface Order {
 export default function PharmacyOrderList() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [statusDropdownId, setStatusDropdownId] = useState<number | null>(null);
   const [isAddingOrder, setIsAddingOrder] = useState(false);
   const [patientSearchQuery, setPatientSearchQuery] = useState("");
@@ -515,7 +515,7 @@ export default function PharmacyOrderList() {
 
                   <div className="flex gap-2">
                     <button
-                      onClick={() => setSelectedOrderId(order.id)}
+                      onClick={() => setSelectedOrder(order)}
                       className="flex-1 px-4 py-2 bg-[#2D9CDB] text-white rounded-lg text-xs font-bold hover:bg-[#1E7FB5] transition-colors"
                     >
                       View Details
@@ -618,7 +618,7 @@ export default function PharmacyOrderList() {
 
                   <div className="flex gap-2">
                     <button
-                      onClick={() => setSelectedOrderId(order.id)}
+                      onClick={() => setSelectedOrder(order)}
                       className="flex-1 px-4 py-2 bg-[#00B074] text-white rounded-lg text-xs font-bold hover:bg-[#009060] transition-colors"
                     >
                       View Details
@@ -638,11 +638,11 @@ export default function PharmacyOrderList() {
       </div>
 
       {/* Order Detail Modal */}
-      {selectedOrderId && (
+      {selectedOrder && (
         <OrderDetailModal
           isOpen={true}
-          orderId={selectedOrderId}
-          onClose={() => setSelectedOrderId(null)}
+          order={selectedOrder}
+          onClose={() => setSelectedOrder(null)}
         />
       )}
 

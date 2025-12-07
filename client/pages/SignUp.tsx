@@ -26,7 +26,7 @@ export default function SignUp() {
       return;
     }
 
-    if (!fullName || !email || !password || !confirmPassword || !phoneNumber || !address) {
+    if (!fullName || !email || !password || !confirmPassword || !phoneNumber || !street || !postalCode || !city) {
       setError("Please fill in all fields");
       return;
     }

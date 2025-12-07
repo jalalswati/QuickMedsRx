@@ -1,130 +1,111 @@
-import { useState } from "react";
-
-interface OrderDetail {
+interface Order {
+  id: number;
   patientName: string;
-  phone: string;
-  address: string;
-  email: string;
   medication: string;
   amount: string;
-  dosage: string;
-  refills: number;
-  startDate: string;
-  prescriber: string;
-  insurance: string;
+  address: string;
   status: string;
-  notes: string;
+  time?: string;
+  completedDate?: string;
 }
 
 interface OrderDetailModalProps {
   isOpen: boolean;
-  orderId: number;
+  order: Order;
   onClose: () => void;
 }
 
 export default function OrderDetailModal({
   isOpen,
-  orderId,
+  order,
   onClose,
 }: OrderDetailModalProps) {
-  const orderDetails: {
-    [key: number]: OrderDetail;
+  const orderDetailsMappings: {
+    [key: number]: {
+      phone: string;
+      email: string;
+      dosage: string;
+      refills: number;
+      startDate: string;
+      prescriber: string;
+      insurance: string;
+      notes: string;
+    };
   } = {
     1: {
-      patientName: "Samantha Sanchez",
       phone: "(555) 123-4567",
-      address: "123 Main St, Los Angeles, CA 90001",
       email: "samantha@email.com",
-      medication: "Omeprazole",
-      amount: "12 Tablets",
       dosage: "20mg - Take 1 tablet daily",
       refills: 3,
       startDate: "December 18, 2024",
       prescriber: "Dr. Johnson",
       insurance: "BlueCross",
-      status: "Ready",
       notes:
         "Tell Patient!!! - need to take 3 times a day with water. Take 30 minutes before meals.",
     },
     2: {
-      patientName: "John Smith",
       phone: "(555) 987-6543",
-      address: "456 Oak Ave, Los Angeles, CA 90002",
       email: "john@email.com",
-      medication: "Ibuprofen",
-      amount: "30 Tablets",
       dosage: "200mg - Take 1-2 tablets every 4-6 hours",
       refills: 2,
       startDate: "December 17, 2024",
       prescriber: "Dr. Martinez",
       insurance: "Aetna",
-      status: "Pending",
       notes:
         "Take with food or milk to reduce stomach upset. Do not exceed 6 tablets in 24 hours.",
     },
     3: {
-      patientName: "Maria Garcia",
       phone: "(555) 456-7890",
-      address: "789 Pine Rd, Los Angeles, CA 90003",
       email: "maria@email.com",
-      medication: "Lisinopril",
-      amount: "60 Tablets",
       dosage: "10mg - Take 1 tablet daily",
       refills: 5,
       startDate: "December 16, 2024",
       prescriber: "Dr. Williams",
       insurance: "Cigna",
-      status: "In Progress",
       notes: "Take at same time each day. Monitor blood pressure regularly.",
     },
     4: {
-      patientName: "Robert Johnson",
       phone: "(555) 234-5678",
-      address: "321 Elm St, Los Angeles, CA 90004",
       email: "robert@email.com",
-      medication: "Metformin",
-      amount: "90 Tablets",
       dosage: "500mg - Take 2 tablets twice daily",
       refills: 4,
       startDate: "December 15, 2024",
       prescriber: "Dr. Brown",
       insurance: "BlueCross",
-      status: "Delivered",
       notes: "Take with meals. May cause mild stomach upset initially.",
     },
     5: {
-      patientName: "Jennifer Lee",
       phone: "(555) 345-6789",
-      address: "654 Maple Dr, Los Angeles, CA 90005",
       email: "jennifer@email.com",
-      medication: "Atorvastatin",
-      amount: "30 Tablets",
       dosage: "20mg - Take 1 tablet daily at night",
       refills: 3,
       startDate: "December 14, 2024",
       prescriber: "Dr. Davis",
       insurance: "Aetna",
-      status: "Delivered",
       notes: "Take in the evening. Maintain consistent cholesterol management.",
     },
     6: {
-      patientName: "Michael Brown",
       phone: "(555) 567-8901",
-      address: "987 Cedar Ln, Los Angeles, CA 90006",
       email: "michael@email.com",
-      medication: "Amoxicillin",
-      amount: "21 Tablets",
       dosage: "500mg - Take 1 tablet three times daily",
       refills: 0,
       startDate: "December 13, 2024",
       prescriber: "Dr. Garcia",
       insurance: "United",
-      status: "Delivered",
       notes: "Complete full course even if feeling better. Do not skip doses.",
     },
   };
 
-  const order = orderDetails[orderId] || orderDetails[1];
+  const extraDetails = orderDetailsMappings[order.id] || {
+    phone: "(555) 000-0000",
+    email: "patient@email.com",
+    dosage: "As prescribed",
+    refills: 0,
+    startDate: new Date().toLocaleDateString(),
+    prescriber: "Unknown Doctor",
+    insurance: "Unknown",
+    notes: "No special instructions",
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {

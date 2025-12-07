@@ -589,6 +589,92 @@ export default function PatientDashboard() {
                 </button>
               </div>
             </div>
+          ) : activeMenu === "Message" ? (
+            <div className="p-8 h-full flex flex-col">
+              <div className="mb-8">
+                <h1 className="text-4xl font-bold text-[#464255] mb-2">
+                  Message Pharmacy
+                </h1>
+                <p className="text-[#A3A3A3]">
+                  Send and receive messages from the pharmacy
+                </p>
+              </div>
+
+              <div className="flex-1 bg-white rounded-2xl shadow-sm flex flex-col overflow-hidden">
+                {/* Messages Container */}
+                <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-[#F9F9F9]">
+                  {(() => {
+                    const conversation = getConversation("patient-001");
+                    if (!conversation || conversation.messages.length === 0) {
+                      return (
+                        <div className="flex items-center justify-center h-full">
+                          <div className="text-center">
+                            <div className="text-6xl mb-4">💬</div>
+                            <p className="text-[#A3A3A3]">
+                              No messages yet. Start a conversation with the pharmacy!
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    return conversation.messages.map((msg) => (
+                      <div
+                        key={msg.id}
+                        className={`flex ${msg.sender === "patient" ? "justify-end" : "justify-start"}`}
+                      >
+                        <div
+                          className={`max-w-xs px-4 py-3 rounded-2xl ${
+                            msg.sender === "patient"
+                              ? "bg-[#00B074] text-white"
+                              : "bg-white text-[#333] border border-[#EBEBEB]"
+                          }`}
+                        >
+                          <p className="text-xs font-bold opacity-75 mb-1">
+                            {msg.senderName}
+                          </p>
+                          <p className="text-sm">{msg.content}</p>
+                          <p
+                            className={`text-xs mt-1 ${
+                              msg.sender === "patient"
+                                ? "opacity-75"
+                                : "text-[#999]"
+                            }`}
+                          >
+                            {msg.timestamp.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </p>
+                        </div>
+                      </div>
+                    ));
+                  })()}
+                </div>
+
+                {/* Message Input */}
+                <div className="border-t border-[#EBEBEB] p-6 bg-white">
+                  <div className="flex gap-3">
+                    <input
+                      type="text"
+                      placeholder="Type your message to pharmacy..."
+                      value={pharmacyMessageInput}
+                      onChange={(e) => setPharmacyMessageInput(e.target.value)}
+                      onKeyPress={(e) =>
+                        e.key === "Enter" && handleSendPharmacyMessage()
+                      }
+                      className="flex-1 bg-[#F3F2F7] rounded-lg px-4 py-3 outline-none text-sm border border-[#EBEBEB] focus:border-[#00B074]"
+                    />
+                    <button
+                      onClick={handleSendPharmacyMessage}
+                      className="px-6 py-3 bg-[#00B074] text-white rounded-lg font-bold hover:bg-[#009D66] transition-colors"
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           ) : (
             <div className="p-8">
               <h1 className="text-4xl font-bold text-[#464255]">

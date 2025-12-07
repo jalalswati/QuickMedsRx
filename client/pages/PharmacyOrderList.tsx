@@ -25,6 +25,14 @@ export default function PharmacyOrderList() {
   const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const [statusDropdownId, setStatusDropdownId] = useState<number | null>(null);
   const [isAddingOrder, setIsAddingOrder] = useState(false);
+  const [patientSearchQuery, setPatientSearchQuery] = useState("");
+  const [showPatientSuggestions, setShowPatientSuggestions] = useState(false);
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
+  const [isAddingNewPatient, setIsAddingNewPatient] = useState(false);
+  const [newPatientForm, setNewPatientForm] = useState({
+    name: "",
+    address: "",
+  });
   const [newOrderForm, setNewOrderForm] = useState({
     patientName: "",
     medication: "",
@@ -33,6 +41,39 @@ export default function PharmacyOrderList() {
     time: "",
   });
   const username = location.state?.username || "Samantha";
+
+  const [dummyPatients, setDummyPatients] = useState<Patient[]>([
+    {
+      id: 1,
+      name: "Samantha Sanchez",
+      address: "123 Main St, Los Angeles, CA 90001",
+    },
+    {
+      id: 2,
+      name: "John Smith",
+      address: "456 Oak Ave, Los Angeles, CA 90002",
+    },
+    {
+      id: 3,
+      name: "Maria Garcia",
+      address: "789 Pine Rd, Los Angeles, CA 90003",
+    },
+    {
+      id: 4,
+      name: "Robert Johnson",
+      address: "321 Elm St, Los Angeles, CA 90004",
+    },
+    {
+      id: 5,
+      name: "Jennifer Lee",
+      address: "654 Maple Dr, Los Angeles, CA 90005",
+    },
+    {
+      id: 6,
+      name: "Michael Brown",
+      address: "987 Cedar Ln, Los Angeles, CA 90006",
+    },
+  ]);
 
   const [currentOrders, setCurrentOrders] = useState<Order[]>([
     {

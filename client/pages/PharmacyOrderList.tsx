@@ -755,6 +755,84 @@ export default function PharmacyOrderList() {
           </div>
         </>
       )}
+
+      {/* Add New Patient Modal */}
+      {isAddingNewPatient && (
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsAddingNewPatient(false)}
+          />
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+              <div className="border-b border-[#EBEBEB] p-6 flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-[#000]">
+                  Add New Patient
+                </h2>
+                <button
+                  onClick={() => setIsAddingNewPatient(false)}
+                  className="text-[#A3A3A3] hover:text-[#000] text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-6 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Patient Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., John Doe"
+                    value={newPatientForm.name}
+                    onChange={(e) =>
+                      setNewPatientForm({
+                        ...newPatientForm,
+                        name: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., 123 Main St, Los Angeles, CA"
+                    value={newPatientForm.address}
+                    onChange={(e) =>
+                      setNewPatientForm({
+                        ...newPatientForm,
+                        address: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
+                  />
+                </div>
+              </div>
+
+              <div className="border-t border-[#EBEBEB] p-6 flex gap-3">
+                <button
+                  onClick={() => setIsAddingNewPatient(false)}
+                  className="flex-1 px-4 py-2 border border-[#D9D9D9] text-[#464255] rounded-lg font-bold hover:bg-[#F3F2F7] transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleAddNewPatient}
+                  className="flex-1 px-4 py-2 bg-[#2D9CDB] text-white rounded-lg font-bold hover:bg-[#1E7FB5] transition-colors"
+                >
+                  Add Patient
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

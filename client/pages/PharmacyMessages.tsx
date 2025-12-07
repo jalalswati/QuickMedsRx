@@ -5,6 +5,9 @@ import { useMessaging } from "../contexts/MessagingContext";
 export default function PharmacyMessages() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { conversations, addMessage } = useMessaging();
+  const [selectedPatientId, setSelectedPatientId] = useState<string | null>(null);
+  const [messageInput, setMessageInput] = useState("");
   const username = location.state?.username || "Samantha";
 
   const handleLogout = () => {

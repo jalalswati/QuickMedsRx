@@ -427,13 +427,21 @@ export default function PatientDashboard() {
             </div>
           ) : activeMenu === "Order History" ? (
             <div className="p-8">
-              <div className="mb-8">
-                <h1 className="text-4xl font-bold text-[#464255] mb-2">
-                  Order History
-                </h1>
-                <p className="text-[#A3A3A3]">
-                  View and manage your medication orders
-                </p>
+              <div className="mb-8 flex items-center justify-between">
+                <div>
+                  <h1 className="text-4xl font-bold text-[#464255] mb-2">
+                    Order History
+                  </h1>
+                  <p className="text-[#A3A3A3]">
+                    View and manage your medication orders
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsAddingOrder(true)}
+                  className="px-6 py-3 bg-[#6366F1] text-white rounded-lg font-bold hover:bg-[#5558E3] transition-colors"
+                >
+                  + Add Order
+                </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {patientOrders.map((order) => (

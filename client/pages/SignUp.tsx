@@ -234,19 +234,11 @@ export default function SignUp() {
             {/* Phone Number Input */}
             <div className="relative">
               <div className="flex items-center gap-3 h-[52px] px-[18px] rounded-2xl bg-[#F9F9F9] border border-transparent hover:border-[#F0EDFF] transition-colors">
-                <svg
-                  className="w-6 h-6 flex-shrink-0"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M17.92 7.02C17.45 6.18 16.3 5.75 15.03 5.75C13.76 5.75 12.61 6.18 12.14 7.02C6.59 7.59 2 12.6 2 18.92V22H22V18.92C22 12.6 17.41 7.59 17.92 7.02ZM7 18H5V16H7V18ZM13 18H11V16H13V18ZM19 18H17V16H19V18Z"
-                    fill="#1C1C1C"
-                  />
-                </svg>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F61bddd9372a64bd4a4d133d4618c75fe%2Fc01527227cc54486877bdbfaa21735dc?format=webp&width=800"
+                  alt="Phone"
+                  className="w-6 h-6 flex-shrink-0 object-contain"
+                />
                 <input
                   type="tel"
                   placeholder="Phone Number"

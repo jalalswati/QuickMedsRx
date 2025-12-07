@@ -127,26 +127,6 @@ export default function DriverCalendar() {
         </div>
       </div>
 
-      {/* Right Sidebar - Payment History */}
-      <div className="w-96 bg-white rounded-3xl p-8 shadow-sm m-6 max-h-[calc(100vh-48px)] overflow-y-auto">
-        <h3 className="text-4xl font-bold text-[#000] mb-8">Payment History</h3>
-
-        <div className="space-y-6">
-          {[
-            { date: "Friday - March 28", amount: "$112" },
-            { date: "Thursday - March 27", amount: "$112" },
-            { date: "Tuesday - March 25", amount: "$112" },
-          ].map((payment, index) => (
-            <div
-              key={index}
-              className="bg-[#E8E8E8] rounded-3xl p-8 hover:shadow-md transition-shadow cursor-pointer"
-            >
-              <p className="font-bold text-[#000] text-2xl mb-2">{payment.date}</p>
-              <p className="text-4xl font-bold text-[#000] mt-4">{payment.amount}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

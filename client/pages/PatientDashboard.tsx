@@ -12,6 +12,12 @@ export default function PatientDashboard() {
   const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const [isEditingPersonalInfo, setIsEditingPersonalInfo] = useState(false);
   const [pharmacyMessageInput, setPharmacyMessageInput] = useState("");
+  const [isAddingOrder, setIsAddingOrder] = useState(false);
+  const [newOrder, setNewOrder] = useState({
+    medication: "",
+    amount: "",
+    prescriber: "",
+  });
   const [patientInfo, setPatientInfo] = useState({
     name: "Jamal Swati",
     dob: "08/14/99",

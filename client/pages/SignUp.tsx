@@ -291,7 +291,13 @@ export default function SignUp() {
 
         {/* Frosted Glass Card */}
         <div className="absolute inset-0 flex items-center justify-center p-6 lg:p-12">
-          <div className="w-full max-w-[412px] h-[524px] rounded-[46px] border border-white/52 backdrop-blur-[6.8px] bg-white/5"></div>
+          <div className="w-full max-w-[412px] h-[524px] rounded-[46px] backdrop-blur-[6.8px] bg-white/5 flex items-center justify-center">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F61bddd9372a64bd4a4d133d4618c75fe%2Fc3e555cf12344c63a3507952abd32e41?format=webp&width=800"
+              alt="QuickMedsRx Logo"
+              className="w-96 h-auto object-contain scale-125"
+            />
+          </div>
         </div>
       </div>
     </div>

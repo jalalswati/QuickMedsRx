@@ -107,18 +107,22 @@ export default function PharmacyOrderList() {
     }
   };
 
-  const handleStatusChange = (orderId: number, newStatus: string, isCurrent: boolean) => {
+  const handleStatusChange = (
+    orderId: number,
+    newStatus: string,
+    isCurrent: boolean,
+  ) => {
     if (isCurrent) {
       setCurrentOrders(
         currentOrders.map((order) =>
-          order.id === orderId ? { ...order, status: newStatus } : order
-        )
+          order.id === orderId ? { ...order, status: newStatus } : order,
+        ),
       );
     } else {
       setOrderHistory(
         orderHistory.map((order) =>
-          order.id === orderId ? { ...order, status: newStatus } : order
-        )
+          order.id === orderId ? { ...order, status: newStatus } : order,
+        ),
       );
     }
     setStatusDropdownId(null);
@@ -252,7 +256,7 @@ export default function PharmacyOrderList() {
                         onClick={(e) => {
                           e.stopPropagation();
                           setStatusDropdownId(
-                            statusDropdownId === order.id ? null : order.id
+                            statusDropdownId === order.id ? null : order.id,
                           );
                         }}
                         className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${getStatusColor(order.status)}`}
@@ -277,7 +281,7 @@ export default function PharmacyOrderList() {
                               >
                                 {status}
                               </button>
-                            )
+                            ),
                           )}
                         </div>
                       )}
@@ -347,7 +351,7 @@ export default function PharmacyOrderList() {
                         onClick={(e) => {
                           e.stopPropagation();
                           setStatusDropdownId(
-                            statusDropdownId === order.id ? null : order.id
+                            statusDropdownId === order.id ? null : order.id,
                           );
                         }}
                         className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${getStatusColor(order.status)}`}
@@ -372,7 +376,7 @@ export default function PharmacyOrderList() {
                               >
                                 {status}
                               </button>
-                            )
+                            ),
                           )}
                         </div>
                       )}

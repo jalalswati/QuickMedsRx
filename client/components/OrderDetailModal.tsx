@@ -142,7 +142,7 @@ export default function OrderDetailModal({
                 {order.patientName}
               </h2>
               <p className="text-sm text-[#A3A3A3] mt-1">
-                Patient prescription information
+                Order #{order.id.toString().padStart(5, "0")}
               </p>
             </div>
             <button

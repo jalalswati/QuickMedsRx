@@ -62,6 +62,19 @@ export default function PatientDashboard() {
     }
   };
 
+  const handleSendPharmacyMessage = () => {
+    if (pharmacyMessageInput.trim()) {
+      addMessage(
+        "patient-001",
+        patientInfo.name,
+        "patient",
+        patientInfo.name,
+        pharmacyMessageInput
+      );
+      setPharmacyMessageInput("");
+    }
+  };
+
   const menuItems = [
     { label: "Dashboard" },
     { label: "Order History" },

@@ -827,7 +827,7 @@ export default function PharmacyOrderList() {
                 </button>
               </div>
 
-              <div className="p-6 space-y-4">
+              <div className="p-6 space-y-4 max-h-96 overflow-y-auto">
                 <div>
                   <label className="block text-sm font-medium text-[#000] mb-2">
                     Patient Name
@@ -848,6 +848,42 @@ export default function PharmacyOrderList() {
 
                 <div>
                   <label className="block text-sm font-medium text-[#000] mb-2">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="e.g., (555) 123-4567"
+                    value={newPatientForm.phone}
+                    onChange={(e) =>
+                      setNewPatientForm({
+                        ...newPatientForm,
+                        phone: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="e.g., john@email.com"
+                    value={newPatientForm.email}
+                    onChange={(e) =>
+                      setNewPatientForm({
+                        ...newPatientForm,
+                        email: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
                     Address
                   </label>
                   <input
@@ -858,6 +894,42 @@ export default function PharmacyOrderList() {
                       setNewPatientForm({
                         ...newPatientForm,
                         address: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Prescribing Doctor
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Dr. Johnson"
+                    value={newPatientForm.prescribingDoctor}
+                    onChange={(e) =>
+                      setNewPatientForm({
+                        ...newPatientForm,
+                        prescribingDoctor: e.target.value,
+                      })
+                    }
+                    className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#000] mb-2">
+                    Insurance Provider
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., BlueCross"
+                    value={newPatientForm.insuranceProvider}
+                    onChange={(e) =>
+                      setNewPatientForm({
+                        ...newPatientForm,
+                        insuranceProvider: e.target.value,
                       })
                     }
                     className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:border-[#2D9CDB]"

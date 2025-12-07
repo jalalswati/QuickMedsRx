@@ -222,7 +222,8 @@ export default function Login() {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F61bddd9372a64bd4a4d133d4618c75fe%2F49b679139c414de1856364692253ff7d?format=webp&width=800"
               alt="QuickMedsRx Logo"
-              className="w-64 h-auto object-contain"
+              className="w-64 h-auto object-contain mix-blend-mode: screen"
+              style={{ mixBlendMode: "screen" }}
             />
           </div>
         </div>

@@ -7,9 +7,11 @@ import { useMessaging } from "../contexts/MessagingContext";
 export default function PatientDashboard() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { addMessage, getConversation } = useMessaging();
   const [activeMenu, setActiveMenu] = useState("Dashboard");
   const [selectedOrderId, setSelectedOrderId] = useState<number | null>(null);
   const [isEditingPersonalInfo, setIsEditingPersonalInfo] = useState(false);
+  const [pharmacyMessageInput, setPharmacyMessageInput] = useState("");
   const [patientInfo, setPatientInfo] = useState({
     name: "Jamal Swati",
     dob: "08/14/99",

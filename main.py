@@ -1,64 +1,24 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, validator
 from enum import Enum
 from typing import Optional
-
-from sqlalchemy import create_engine, Column, Integer, String, DateTime
-from sqlalchemy.orm import declarative_base, sessionmaker, Session
 from datetime import datetime
+import sqlite3
 import bcrypt
+import os
 
 # =========================
-# DB CONFIG
+# Config
 # =========================
-# For quick local use we start with SQLite.
-# When you’re ready for MySQL, swap DATABASE_URL.
-DATABASE_URL = "sqlite:///./quickmedsrx.db"
-# Example MySQL URL (uncomment & edit when ready):
-# DATABASE_URL = "mysql+pymysql://USER:PASSWORD@localhost:3306/quickmedsrx"
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
-)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
-Base = declarative_base()
+DB_PATH = "quickmedsrx.db"  # SQLite database file
 
-
-# =========================
-# Models
-# =========================
 
 class UserRole(str, Enum):
     pharmacy = "pharmacy"
     patient = "patient"
     driver = "driver"
-
-
-class User(Base):
-    __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True, index=True)
-    full_name = Column(String(255), nullable=False)
-    email = Column(String(255), unique=True, index=True, nullable=False)
-    password_hash = Column(String(255), nullable=False)
-
-    phone_number = Column(String(30))
-    street_address = Column(String(255))
-    postal_code = Column(String(20))
-    city = Column(String(100))
-
-    role = Column(String(20), nullable=False)  # "pharmacy" | "patient" | "driver"
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-
-Base.metadata.create_all(bind=engine)
-
-
-# =========================
-# DTOs (match your React props)
-# =========================
 
 class SignupRequest(BaseModel):
     fullName: str
@@ -91,35 +51,44 @@ class LoginResponse(BaseModel):
 
 
 # =========================
-# FastAPI app
+# Database helpers (RAW SQL)
 # =========================
 
-app = FastAPI(title="QuickMedsRx Auth API")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # tighten later
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+def get_connection():
+    """Create a new SQLite connection."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row  # access columns by name
+    return conn
 
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+def init_db():
+    """Create the users table if it doesn't exist."""
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            full_name TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE,
+            password_hash TEXT NOT NULL,
+            phone_number TEXT,
+            street_address TEXT,
+            postal_code TEXT,
+            city TEXT,
+            role TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        );
+        """
+    )
+    conn.commit()
+    conn.close()
 
-
-# =========================
-# Password helpers
-# =========================
 
 def hash_password(plain: str) -> str:
     salt = bcrypt.gensalt()
-    return bcrypt.hashpw(plain.encode("utf-8"), salt).decode("utf-8")
+    hashed = bcrypt.hashpw(plain.encode("utf-8"), salt)
+    return hashed.decode("utf-8")
 
 
 def verify_password(plain: str, hashed: str) -> bool:
@@ -127,50 +96,109 @@ def verify_password(plain: str, hashed: str) -> bool:
 
 
 # =========================
+# FastAPI app
+# =========================
+
+app = FastAPI(title="QuickMedsRx Auth API (raw SQL)")
+
+# Allow frontend dev origin
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # you can change this to your frontend URL later
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.on_event("startup")
+def on_startup():
+    # Make sure database + table exist
+    init_db()
+
+
+# =========================
 # Routes
 # =========================
 
 @app.post("/api/signup")
-def signup(body: SignupRequest, db: Session = Depends(get_db)):
-    # 1. Email unique?
-    existing = db.query(User).filter(User.email == body.email).first()
-    if existing:
-        raise HTTPException(status_code=400, detail="Email already registered")
-
-    # 2. Basic password rule (optional extra checks)
+def signup(body: SignupRequest):
+    # Basic password rule
     if len(body.password) < 6:
         raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
 
-    # 3. Create the user, including new fields
-    user = User(
-        full_name=body.fullName,
-        email=body.email,
-        password_hash=hash_password(body.password),
-        phone_number=body.phoneNumber,
-        street_address=body.streetAddress,
-        postal_code=body.postalCode,
-        city=body.city,
-        role=body.role.value,
+    conn = get_connection()
+    cur = conn.cursor()
+
+    # Check if email already exists
+    cur.execute("SELECT id FROM users WHERE email = ?", (body.email,))
+    existing = cur.fetchone()
+    if existing:
+        conn.close()
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    # Insert new user
+    now_str = datetime.utcnow().isoformat()
+    pwd_hash = hash_password(body.password)
+
+    cur.execute(
+        """
+        INSERT INTO users
+        (full_name, email, password_hash, phone_number, street_address,
+         postal_code, city, role, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            body.fullName,
+            body.email,
+            pwd_hash,
+            body.phoneNumber,
+            body.streetAddress,
+            body.postalCode,
+            body.city,
+            body.role.value,
+            now_str,
+        ),
     )
-    db.add(user)
-    db.commit()
-    db.refresh(user)
+
+    conn.commit()
+    conn.close()
 
     return {"message": "Account created successfully"}
 
 
 @app.post("/api/login", response_model=LoginResponse)
-def login(body: LoginRequest, db: Session = Depends(get_db)):
-    # 1. Find by email
-    user = db.query(User).filter(User.email == body.email).first()
-    if not user or not verify_password(body.password, user.password_hash):
+def login(body: LoginRequest):
+    conn = get_connection()
+    cur = conn.cursor()
+
+    # Look up user by email
+    cur.execute(
+        """
+        SELECT id, full_name, email, password_hash, role
+        FROM users
+        WHERE email = ?
+        """,
+        (body.email,),
+    )
+    row = cur.fetchone()
+    conn.close()
+
+    if not row:
         raise HTTPException(status_code=401, detail="Invalid email or password")
 
-    # 2. Role must match what was used at signup
-    if user.role != body.role.value:
-        raise HTTPException(status_code=403, detail="This email is not registered with that role")
+    # Check password
+    if not verify_password(body.password, row["password_hash"]):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
 
-    # 3. Redirect based on role
+    # Check role matches what they chose on login
+    if row["role"] != body.role.value:
+        raise HTTPException(
+            status_code=403,
+            detail="This email is not registered with the selected role",
+        )
+
+    # Decide where to send them
     redirect_map = {
         "pharmacy": "/pharmacy-dashboard",
         "patient": "/patient-dashboard",

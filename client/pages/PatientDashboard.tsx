@@ -41,30 +41,74 @@ export default function PatientDashboard() {
     Array<{ text: string; isUser: boolean }>
   >([
     {
-      text: "Hello there! I'm Medi, ready to answer any general questions you may have about your medication!",
+      text: "Hello there! I'm Medi, your AI medication assistant powered by Claude. I can answer questions about your medications, dosages, side effects, interactions, and more. How can I help you today?",
       isUser: false,
     },
   ]);
   const [messageInput, setMessageInput] = useState("");
+  const [isMediTyping, setIsMediTyping] = useState(false);
   const username = location.state?.username || "Jamal";
 
   const handleLogout = () => {
     navigate("/");
   };
 
-  const handleSendMessage = () => {
-    if (messageInput.trim()) {
-      setChatMessages([...chatMessages, { text: messageInput, isUser: true }]);
-      setMessageInput("");
-      setTimeout(() => {
-        setChatMessages((prev) => [
-          ...prev,
-          {
-            text: "Thanks for your message! How else can I help?",
-            isUser: false,
-          },
-        ]);
-      }, 500);
+  const handleSendMessage = async () => {
+    const userText = messageInput.trim();
+    if (!userText) return;
+
+    const updatedMessages = [...chatMessages, { text: userText, isUser: true }];
+    setChatMessages(updatedMessages);
+    setMessageInput("");
+    setIsMediTyping(true);
+
+    try {
+      // Build conversation history for the API (exclude the initial greeting)
+      const history = updatedMessages.slice(1).map((msg) => ({
+        role: msg.isUser ? "user" : "assistant",
+        content: msg.text,
+      }));
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1000,
+          system: `You are Medi, a friendly and knowledgeable AI medication assistant for QuickMedsRx, a prescription delivery service. 
+
+Your role is to help patients with:
+- General questions about medications (dosages, side effects, interactions, storage)
+- Understanding their prescriptions
+- OTC medication recommendations for common ailments
+- Guidance on when to contact their doctor or pharmacist
+- Information about their medication schedule
+
+The patient's name is ${username}. They use CVS Pharmacy at 10181 Reseda Blvd as their main pharmacy. Their doctor is Dr. Kevin Ramirez (Family Medicine) at Cedars-Sinai Medical Group. They are currently on: Omeprazole, Ibuprofen, and Lisinopril.
+
+Always remind patients to consult their doctor or pharmacist for personalized medical advice. Keep responses concise, warm, and easy to understand. Never diagnose conditions or replace professional medical advice.`,
+          messages: history,
+        }),
+      });
+
+      const data = await response.json();
+      const reply =
+        data.content?.[0]?.text ||
+        "I'm sorry, I had trouble responding. Please try again.";
+
+      setChatMessages((prev) => [...prev, { text: reply, isUser: false }]);
+    } catch (err) {
+      setChatMessages((prev) => [
+        ...prev,
+        {
+          text: "Sorry, I'm having trouble connecting right now. Please try again in a moment.",
+          isUser: false,
+        },
+      ]);
+    } finally {
+      setIsMediTyping(false);
     }
   };
 
@@ -403,23 +447,38 @@ export default function PatientDashboard() {
                     ))}
                   </div>
 
+                  {/* Typing indicator */}
+                  {isMediTyping && (
+                    <div className="flex justify-start px-4 pb-2">
+                      <div className="bg-white bg-opacity-20 text-white px-4 py-2 rounded-2xl">
+                        <div className="flex gap-1 items-center h-4">
+                          <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                          <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                          <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Chat Input */}
                   <div className="border-t border-[#898989] p-4 flex gap-2">
                     <input
                       type="text"
-                      placeholder="Type your message..."
+                      placeholder="Ask Medi about your medications..."
                       value={messageInput}
                       onChange={(e) => setMessageInput(e.target.value)}
                       onKeyPress={(e) =>
-                        e.key === "Enter" && handleSendMessage()
+                        e.key === "Enter" && !isMediTyping && handleSendMessage()
                       }
-                      className="flex-1 bg-white bg-opacity-20 text-white rounded-lg px-3 py-2 outline-none placeholder:text-[#999]"
+                      disabled={isMediTyping}
+                      className="flex-1 bg-white bg-opacity-20 text-white rounded-lg px-3 py-2 outline-none placeholder:text-[#999] disabled:opacity-60"
                     />
                     <button
                       onClick={handleSendMessage}
-                      className="w-10 h-10 bg-[#6366F1] rounded-lg flex items-center justify-center text-white hover:bg-[#5558E3] transition-colors"
+                      disabled={isMediTyping}
+                      className="w-10 h-10 bg-[#6366F1] rounded-lg flex items-center justify-center text-white hover:bg-[#5558E3] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      ➤
+                      {isMediTyping ? "⏳" : "➤"}
                     </button>
                   </div>
                 </div>

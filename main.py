@@ -20,6 +20,7 @@ class UserRole(str, Enum):
     patient = "patient"
     driver = "driver"
 
+
 class SignupRequest(BaseModel):
     fullName: str
     email: EmailStr
@@ -41,7 +42,6 @@ class SignupRequest(BaseModel):
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str
-    role: UserRole
 
 
 class LoginResponse(BaseModel):
@@ -57,7 +57,7 @@ class LoginResponse(BaseModel):
 def get_connection():
     """Create a new SQLite connection."""
     conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row  # access columns by name
+    conn.row_factory = sqlite3.Row
     return conn
 
 
@@ -101,10 +101,9 @@ def verify_password(plain: str, hashed: str) -> bool:
 
 app = FastAPI(title="QuickMedsRx Auth API (raw SQL)")
 
-# Allow frontend dev origin
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # you can change this to your frontend URL later
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -113,7 +112,6 @@ app.add_middleware(
 
 @app.on_event("startup")
 def on_startup():
-    # Make sure database + table exist
     init_db()
 
 
@@ -123,7 +121,6 @@ def on_startup():
 
 @app.post("/api/signup")
 def signup(body: SignupRequest):
-    # Basic password rule
     if len(body.password) < 6:
         raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
 
@@ -137,7 +134,6 @@ def signup(body: SignupRequest):
         conn.close()
         raise HTTPException(status_code=400, detail="Email already registered")
 
-    # Insert new user
     now_str = datetime.utcnow().isoformat()
     pwd_hash = hash_password(body.password)
 
@@ -191,22 +187,20 @@ def login(body: LoginRequest):
     if not verify_password(body.password, row["password_hash"]):
         raise HTTPException(status_code=401, detail="Invalid email or password")
 
-    # Check role matches what they chose on login
-    if row["role"] != body.role.value:
-        raise HTTPException(
-            status_code=403,
-            detail="This email is not registered with the selected role",
-        )
+    # Use stored role from database
+    stored_role = row["role"]
 
-    # Decide where to send them
     redirect_map = {
         "pharmacy": "/pharmacy-dashboard",
         "patient": "/patient-dashboard",
         "driver": "/driver-dashboard",
     }
 
+    if stored_role not in redirect_map:
+        raise HTTPException(status_code=500, detail="Invalid role found for user")
+
     return LoginResponse(
         message="Login successful",
-        role=body.role,
-        redirectTo=redirect_map[body.role.value],
+        role=UserRole(stored_role),
+        redirectTo=redirect_map[stored_role],
     )
